@@ -90,9 +90,46 @@ function send_email($to, $subject, $htmlBody) {
         error_log('PHPMailer autoload not found. Please run `composer install` in project root.');
         return false;
     }
-    require_once $composerAutoload;
-    try {
-        $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+        require_once $composerAutoload;
+
+        /*
+         PHPMailer + SMTP example notes:
+
+         - Typical ports and encryption:
+             * 587 + STARTTLS (`SMTPSecure = 'tls'`) for most SMTP providers
+             * 465 + SSL (`SMTPSecure = 'ssl'`) for SMTPS
+             * 25 sometimes without encryption (not recommended)
+
+         - For Gmail: enable "App passwords" or use OAuth2. Plain username/password may be blocked.
+
+         - Example usage (already used below):
+                 $mail = new PHPMailer\PHPMailer\PHPMailer(true);
+                 $mail->isSMTP();
+                 $mail->Host = $SMTP_HOST;            // SMTP server
+                 $mail->SMTPAuth = true;              // enable SMTP auth
+                 $mail->Username = $SMTP_USER;        // SMTP username
+                 $mail->Password = $SMTP_PASS;        // SMTP password or app password
+                 $mail->SMTPSecure = $SMTP_SECURE;    // 'tls' or 'ssl'
+                 $mail->Port = (int)$SMTP_PORT;       // TCP port to connect to
+
+         - Debugging: set `$mail->SMTPDebug = 2;` for verbose output (remove in production).
+
+         - If you encounter certificate verification errors on internal SMTP servers,
+             you can set `$mail->SMTPOptions` to allow self-signed certs (use with caution):
+
+                 $mail->SMTPOptions = [
+                     'ssl' => [
+                         'verify_peer' => false,
+                         'verify_peer_name' => false,
+                         'allow_self_signed' => true
+                     ]
+                 ];
+
+         - Timeout can be adjusted with `$mail->Timeout = 30;` (seconds).
+        */
+
+        try {
+                $mail = new PHPMailer\\PHPMailer\\PHPMailer(true);
         $mail->isSMTP();
         $mail->Host = $SMTP_HOST;
         $mail->SMTPAuth = true;

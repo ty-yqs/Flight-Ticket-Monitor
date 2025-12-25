@@ -1,4 +1,4 @@
-# Flight Ticket Monitor (PHP)
+# Flight Ticket Monitor
 
 A minimal PHP service to monitor flight prices on flights.ctrip.com.
 Users subscribe to a one-way route (IATA codes) and date; an hourly worker fetches rendered pages, extracts prices, sorts them, and emails results.
