@@ -1,0 +1,2324 @@
+[
+  {
+    "iata": "AAT",
+    "name": "Altay Air Base",
+    "city": "Altay",
+    "country": "China",
+    "lat": 47.7498855591,
+    "lon": 88.08580780030002,
+    "province": "Others"
+  },
+  {
+    "iata": "ACX",
+    "name": "Xingyi Airport",
+    "city": "Xingyi",
+    "country": "China",
+    "lat": 25.0863888889,
+    "lon": 104.959444444,
+    "province": "Guizhou"
+  },
+  {
+    "iata": "AEB",
+    "name": "Baise Youjiang Airport",
+    "city": "Baise",
+    "country": "China",
+    "lat": 23.7206001282,
+    "lon": 106.959999084,
+    "province": "Guangxi"
+  },
+  {
+    "iata": "AHJ",
+    "name": "Hongyuan Airport",
+    "city": "Ngawa",
+    "country": "China",
+    "lat": 32.53154,
+    "lon": 102.35224,
+    "province": "Others"
+  },
+  {
+    "iata": "AKA",
+    "name": "Ankang Wulipu Airport",
+    "city": "Ankang",
+    "country": "China",
+    "lat": 32.708099,
+    "lon": 108.931,
+    "province": "Shaanxi"
+  },
+  {
+    "iata": "AKU",
+    "name": "Aksu Airport",
+    "city": "Aksu",
+    "country": "China",
+    "lat": 41.262501,
+    "lon": 80.291702,
+    "province": "Others"
+  },
+  {
+    "iata": "AOG",
+    "name": "Anshan Air Base",
+    "city": "Anshan",
+    "country": "China",
+    "lat": 41.105301,
+    "lon": 122.853996,
+    "province": "Liaoning"
+  },
+  {
+    "iata": "AQG",
+    "name": "Anqing Tianzhushan Airport",
+    "city": "Anqing",
+    "country": "China",
+    "lat": 30.582199,
+    "lon": 117.050003,
+    "province": "Anhui"
+  },
+  {
+    "iata": "AVA",
+    "name": "Anshun Huangguoshu Airport",
+    "city": "Anshun",
+    "country": "China",
+    "lat": 26.2605555556,
+    "lon": 105.873333333,
+    "province": "Guizhou"
+  },
+  {
+    "iata": "AXF",
+    "name": "Alxa Left Banner Bayanhot Airport",
+    "city": "Alxa Left Banner",
+    "country": "China",
+    "lat": 38.74831,
+    "lon": 105.58858,
+    "province": "Others"
+  },
+  {
+    "iata": "BAR",
+    "name": "Qionghai Bo'ao Airport",
+    "city": "Qionghai",
+    "country": "China",
+    "lat": 19.13824,
+    "lon": 110.454775,
+    "province": "Hainan"
+  },
+  {
+    "iata": "BAV",
+    "name": "Baotou Airport",
+    "city": "Baotou",
+    "country": "China",
+    "lat": 40.560001373291016,
+    "lon": 109.99700164794922,
+    "province": "Inner Mongolia"
+  },
+  {
+    "iata": "BFJ",
+    "name": "Bijie Feixiong Airport",
+    "city": "Bijie",
+    "country": "China",
+    "lat": 27.267066,
+    "lon": 105.472097,
+    "province": "Guizhou"
+  },
+  {
+    "iata": "BFU",
+    "name": "Bengbu Airport",
+    "city": "Bengbu",
+    "country": "China",
+    "lat": 32.8477333333,
+    "lon": 117.320244444,
+    "province": "Anhui"
+  },
+  {
+    "iata": "BHY",
+    "name": "Beihai Airport",
+    "city": "Beihai",
+    "country": "China",
+    "lat": 21.5394,
+    "lon": 109.293999,
+    "province": "Guangxi"
+  },
+  {
+    "iata": "BPL",
+    "name": "Alashankou Bole (Bortala) airport",
+    "city": "Bole",
+    "country": "China",
+    "lat": 44.895,
+    "lon": 82.3,
+    "province": "Xinjiang"
+  },
+  {
+    "iata": "BPX",
+    "name": "Qamdo Bangda Airport",
+    "city": "Bangda",
+    "country": "China",
+    "lat": 30.553600311279297,
+    "lon": 97.1082992553711,
+    "province": "Others"
+  },
+  {
+    "iata": "BSD",
+    "name": "Baoshan Yunduan Airport",
+    "city": "Baoshan",
+    "country": "China",
+    "lat": 25.053301,
+    "lon": 99.168297,
+    "province": "Yunnan"
+  },
+  {
+    "iata": "CAN",
+    "name": "Guangzhou Baiyun International Airport",
+    "city": "Guangzhou",
+    "country": "China",
+    "lat": 23.39240074157715,
+    "lon": 113.29900360107422,
+    "province": "Guangdong"
+  },
+  {
+    "iata": "CDE",
+    "name": "Chengde Puning Airport",
+    "city": "Chengde",
+    "country": "China",
+    "lat": 41.1225,
+    "lon": 118.073889,
+    "province": "Hebei"
+  },
+  {
+    "iata": "CGD",
+    "name": "Changde Airport",
+    "city": "Changde",
+    "country": "China",
+    "lat": 28.9188995361,
+    "lon": 111.63999939,
+    "province": "Hunan"
+  },
+  {
+    "iata": "CGO",
+    "name": "Zhengzhou Xinzheng International Airport",
+    "city": "Zhengzhou",
+    "country": "China",
+    "lat": 34.519699096699995,
+    "lon": 113.841003418,
+    "province": "Henan"
+  },
+  {
+    "iata": "CGQ",
+    "name": "Longjia Airport",
+    "city": "Changchun",
+    "country": "China",
+    "lat": 43.9962005615,
+    "lon": 125.684997559,
+    "province": "Jilin"
+  },
+  {
+    "iata": "CHG",
+    "name": "Chaoyang Airport",
+    "city": "Chaoyang",
+    "country": "China",
+    "lat": 41.538101,
+    "lon": 120.434998,
+    "province": "Jilin"
+  },
+  {
+    "iata": "CIF",
+    "name": "Chifeng Airport",
+    "city": "Chifeng",
+    "country": "China",
+    "lat": 42.23500061035156,
+    "lon": 118.90799713134766,
+    "province": "Inner Mongolia"
+  },
+  {
+    "iata": "CIH",
+    "name": "Changzhi Airport",
+    "city": "Changzhi",
+    "country": "China",
+    "lat": 36.247501,
+    "lon": 113.125999,
+    "province": "Shanxi"
+  },
+  {
+    "iata": "CKG",
+    "name": "Chongqing Jiangbei International Airport",
+    "city": "Chongqing",
+    "country": "China",
+    "lat": 29.719200134277344,
+    "lon": 106.64199829101562,
+    "province": "Chongqing"
+  },
+  {
+    "iata": "CMJ",
+    "name": "Chi Mei Airport",
+    "city": "Cimei",
+    "country": "Taiwan",
+    "lat": 23.2131004333,
+    "lon": 119.417999268,
+    "province": "Others"
+  },
+  {
+    "iata": "CNI",
+    "name": "Changhai Airport",
+    "city": "Changhai",
+    "country": "China",
+    "lat": 39.2666666667,
+    "lon": 122.666944444,
+    "province": "Others"
+  },
+  {
+    "iata": "CSX",
+    "name": "Changsha Huanghua International Airport",
+    "city": "Changcha",
+    "country": "China",
+    "lat": 28.189199447599997,
+    "lon": 113.220001221,
+    "province": "Others"
+  },
+  {
+    "iata": "CTU",
+    "name": "Chengdu Shuangliu International Airport",
+    "city": "Chengdu",
+    "country": "China",
+    "lat": 30.578500747680664,
+    "lon": 103.9469985961914,
+    "province": "Sichuan"
+  },
+  {
+    "iata": "CWJ",
+    "name": "Cangyuan Washan Airport",
+    "city": "Cangyuan",
+    "country": "China",
+    "lat": 23.273889,
+    "lon": 99.373611,
+    "province": "Others"
+  },
+  {
+    "iata": "CYI",
+    "name": "Chiayi Airport",
+    "city": "Chiayi",
+    "country": "Taiwan",
+    "lat": 23.46179962158203,
+    "lon": 120.39299774169922,
+    "province": "Others"
+  },
+  {
+    "iata": "CZX",
+    "name": "Changzhou Benniu Airport",
+    "city": "Changzhou",
+    "country": "China",
+    "lat": 31.919701,
+    "lon": 119.778999,
+    "province": "Jiangsu"
+  },
+  {
+    "iata": "DAT",
+    "name": "Datong Airport",
+    "city": "Datong",
+    "country": "China",
+    "lat": 40.060299,
+    "lon": 113.482002,
+    "province": "Anhui"
+  },
+  {
+    "iata": "DAX",
+    "name": "Dachuan Airport",
+    "city": "Dazhou",
+    "country": "China",
+    "lat": 31.1302,
+    "lon": 107.4295,
+    "province": "Sichuan"
+  },
+  {
+    "iata": "DBC",
+    "name": "Baicheng Chang'an Airport",
+    "city": "Baicheng",
+    "country": "China",
+    "lat": 45.505278,
+    "lon": 123.019722,
+    "province": "Jilin"
+  },
+  {
+    "iata": "DCY",
+    "name": "Daocheng Yading Airport",
+    "city": "Daocheng",
+    "country": "China",
+    "lat": 29.323056,
+    "lon": 100.053333,
+    "province": "Jiangsu"
+  },
+  {
+    "iata": "DDG",
+    "name": "Dandong Airport",
+    "city": "Dandong",
+    "country": "China",
+    "lat": 40.0247,
+    "lon": 124.286003,
+    "province": "Liaoning"
+  },
+  {
+    "iata": "DIG",
+    "name": "Diqing Airport",
+    "city": "Shangri-La",
+    "country": "China",
+    "lat": 27.7936,
+    "lon": 99.6772,
+    "province": "Yunnan"
+  },
+  {
+    "iata": "DLC",
+    "name": "Zhoushuizi Airport",
+    "city": "Dalian",
+    "country": "China",
+    "lat": 38.9656982421875,
+    "lon": 121.53900146484375,
+    "province": "Liaoning"
+  },
+  {
+    "iata": "DLU",
+    "name": "Dali Airport",
+    "city": "Dali",
+    "country": "China",
+    "lat": 25.649401,
+    "lon": 100.319,
+    "province": "Yunnan"
+  },
+  {
+    "iata": "DNH",
+    "name": "Dunhuang Airport",
+    "city": "Dunhuang",
+    "country": "China",
+    "lat": 40.16109848022461,
+    "lon": 94.80919647216797,
+    "province": "Gansu"
+  },
+  {
+    "iata": "DOY",
+    "name": "Dongying Shengli Airport",
+    "city": "Dongying",
+    "country": "China",
+    "lat": 37.5085983276,
+    "lon": 118.788002014,
+    "province": "Shandong"
+  },
+  {
+    "iata": "DQA",
+    "name": "Saertu Airport",
+    "city": "Daqing",
+    "country": "China",
+    "lat": 46.7463888889,
+    "lon": 125.140555556,
+    "province": "Heilongjiang"
+  },
+  {
+    "iata": "DSN",
+    "name": "Ordos Ejin Horo Airport",
+    "city": "Dongsheng",
+    "country": "China",
+    "lat": 39.49,
+    "lon": 109.861388889,
+    "province": "Inner Mongolia"
+  },
+  {
+    "iata": "DTU",
+    "name": "Wudalianchi Dedu Airport",
+    "city": "Wudalianchi",
+    "country": "China",
+    "lat": 48.445,
+    "lon": 126.133,
+    "province": "Inner Mongolia"
+  },
+  {
+    "iata": "DYG",
+    "name": "Dayong Airport",
+    "city": "Dayong",
+    "country": "China",
+    "lat": 29.1028,
+    "lon": 110.443001,
+    "province": "Others"
+  },
+  {
+    "iata": "EJN",
+    "name": "Ejin Banner-Taolai Airport",
+    "city": "Ejin Banner",
+    "country": "China",
+    "lat": 42.0155,
+    "lon": 101.0005,
+    "province": "Others"
+  },
+  {
+    "iata": "ENH",
+    "name": "Enshi Airport",
+    "city": "Enshi",
+    "country": "China",
+    "lat": 30.3202991486,
+    "lon": 109.48500061,
+    "province": "Hubei"
+  },
+  {
+    "iata": "ENY",
+    "name": "Yan'an Ershilipu Airport",
+    "city": "Yan'an",
+    "country": "China",
+    "lat": 36.636902,
+    "lon": 109.554001,
+    "province": "Shaanxi"
+  },
+  {
+    "iata": "ERL",
+    "name": "Erenhot Saiwusu International Airport",
+    "city": "Erenhot",
+    "country": "China",
+    "lat": 43.4225,
+    "lon": 112.096667,
+    "province": "Inner Mongolia"
+  },
+  {
+    "iata": "FOC",
+    "name": "Fuzhou Changle International Airport",
+    "city": "Fuzhou",
+    "country": "China",
+    "lat": 25.935100555419922,
+    "lon": 119.66300201416016,
+    "province": "Jiangxi"
+  },
+  {
+    "iata": "FUG",
+    "name": "Fuyang Xiguan Airport",
+    "city": "Fuyang",
+    "country": "China",
+    "lat": 32.882157,
+    "lon": 115.734364,
+    "province": "Anhui"
+  },
+  {
+    "iata": "FUO",
+    "name": "Foshan Shadi Airport",
+    "city": "Foshan",
+    "country": "China",
+    "lat": 23.083299636799996,
+    "lon": 113.069999695,
+    "province": "Guangdong"
+  },
+  {
+    "iata": "FYJ",
+    "name": "Dongji Aiport",
+    "city": "Fuyuan",
+    "country": "China",
+    "lat": 48.199494,
+    "lon": 134.366447,
+    "province": "Heilongjiang"
+  },
+  {
+    "iata": "FYN",
+    "name": "Fuyun Koktokay Airport",
+    "city": "Fuyun",
+    "country": "China",
+    "lat": 46.804169,
+    "lon": 89.512006,
+    "province": "Xinjiang"
+  },
+  {
+    "iata": "GMQ",
+    "name": "Golog Maqin Airport",
+    "city": "Golog",
+    "country": "China",
+    "lat": 34.418066,
+    "lon": 100.301144,
+    "province": "Others"
+  },
+  {
+    "iata": "GNI",
+    "name": "Lyudao Airport",
+    "city": "Green Island",
+    "country": "Taiwan",
+    "lat": 22.673900604248047,
+    "lon": 121.46600341796875,
+    "province": "Others"
+  },
+  {
+    "iata": "GOQ",
+    "name": "Golmud Airport",
+    "city": "Golmud",
+    "country": "China",
+    "lat": 36.4006,
+    "lon": 94.786102,
+    "province": "Others"
+  },
+  {
+    "iata": "GXH",
+    "name": "Gannan Xiahe Airport",
+    "city": "Xiahe city",
+    "country": "China",
+    "lat": 34.8105,
+    "lon": 102.6447,
+    "province": "Others"
+  },
+  {
+    "iata": "GYS",
+    "name": "Guangyuan Airport",
+    "city": "Guangyuan",
+    "country": "China",
+    "lat": 32.3911018371582,
+    "lon": 105.7020034790039,
+    "province": "Sichuan"
+  },
+  {
+    "iata": "GYU",
+    "name": "Guyuan Liupanshan Airport",
+    "city": "Guyuan",
+    "country": "China",
+    "lat": 36.0788888889,
+    "lon": 106.216944444,
+    "province": "Ningxia"
+  },
+  {
+    "iata": "HAK",
+    "name": "Haikou Meilan International Airport",
+    "city": "Haikou",
+    "country": "China",
+    "lat": 19.934900283813477,
+    "lon": 110.45899963378906,
+    "province": "Yunnan"
+  },
+  {
+    "iata": "HCJ",
+    "name": "Hechi Jinchengjiang Airport",
+    "city": "Hechi",
+    "country": "China",
+    "lat": 24.805,
+    "lon": 107.6997,
+    "province": "Guangxi"
+  },
+  {
+    "iata": "HCN",
+    "name": "Hengchun Airport",
+    "city": "Hengchun",
+    "country": "Taiwan",
+    "lat": 22.041099548339844,
+    "lon": 120.7300033569336,
+    "province": "Others"
+  },
+  {
+    "iata": "HDG",
+    "name": "Handan Airport",
+    "city": "Handan",
+    "country": "China",
+    "lat": 36.5258333333,
+    "lon": 114.425555556,
+    "province": "Hebei"
+  },
+  {
+    "iata": "HEK",
+    "name": "Heihe Airport",
+    "city": "Heihe",
+    "country": "China",
+    "lat": 50.1716209371,
+    "lon": 127.308883667,
+    "province": "Heilongjiang"
+  },
+  {
+    "iata": "HET",
+    "name": "Baita International Airport",
+    "city": "Hohhot",
+    "country": "China",
+    "lat": 40.851398,
+    "lon": 111.823997,
+    "province": "Inner Mongolia"
+  },
+  {
+    "iata": "HFE",
+    "name": "Hefei Luogang International Airport",
+    "city": "Hefei",
+    "country": "China",
+    "lat": 31.780000686645508,
+    "lon": 117.2979965209961,
+    "province": "Anhui"
+  },
+  {
+    "iata": "HGH",
+    "name": "Hangzhou Xiaoshan International Airport",
+    "city": "Hangzhou",
+    "country": "China",
+    "lat": 30.22949981689453,
+    "lon": 120.43399810791016,
+    "province": "Zhejiang"
+  },
+  {
+    "iata": "HHP",
+    "name": "Shun Tak Heliport",
+    "city": "Hong Kong",
+    "country": "Hong Kong",
+    "lat": 22.2893714905,
+    "lon": 114.152153015,
+    "province": "Others"
+  },
+  {
+    "iata": "HIA",
+    "name": "Lianshui Airport",
+    "city": "Huai An",
+    "country": "China",
+    "lat": 33.7908333333,
+    "lon": 119.125,
+    "province": "Jiangsu"
+  },
+  {
+    "iata": "HJJ",
+    "name": "Zhijiang Airport",
+    "city": "Zhijiang",
+    "country": "China",
+    "lat": 27.4411111111,
+    "lon": 109.7,
+    "province": "Hubei"
+  },
+  {
+    "iata": "HKG",
+    "name": "Hong Kong International Airport",
+    "city": "Hong Kong",
+    "country": "Hong Kong",
+    "lat": 22.308901,
+    "lon": 113.915001,
+    "province": "Others"
+  },
+  {
+    "iata": "HLD",
+    "name": "Dongshan Airport",
+    "city": "Hailar",
+    "country": "China",
+    "lat": 49.2050018311,
+    "lon": 119.824996948,
+    "province": "Inner Mongolia"
+  },
+  {
+    "iata": "HLH",
+    "name": "Ulanhot Airport",
+    "city": "Ulanhot",
+    "country": "China",
+    "lat": 46.195333,
+    "lon": 122.008333,
+    "province": "Inner Mongolia"
+  },
+  {
+    "iata": "HMI",
+    "name": "Hami Airport",
+    "city": "Hami",
+    "country": "China",
+    "lat": 42.8414,
+    "lon": 93.669197,
+    "province": "Xinjiang"
+  },
+  {
+    "iata": "HNY",
+    "name": "Hengyang Nanyue Airport",
+    "city": "Hengyang",
+    "country": "China",
+    "lat": 26.9053,
+    "lon": 112.627998,
+    "province": "Hunan"
+  },
+  {
+    "iata": "HPG",
+    "name": "Shennongjia Hongping Airport",
+    "city": "Shennongjia",
+    "country": "China",
+    "lat": 31.626,
+    "lon": 110.34,
+    "province": "Others"
+  },
+  {
+    "iata": "HRB",
+    "name": "Taiping Airport",
+    "city": "Harbin",
+    "country": "China",
+    "lat": 45.6234016418457,
+    "lon": 126.25,
+    "province": "Heilongjiang"
+  },
+  {
+    "iata": "HSN",
+    "name": "Zhoushan Airport",
+    "city": "Zhoushan",
+    "country": "China",
+    "lat": 29.9342002869,
+    "lon": 122.361999512,
+    "province": "Zhejiang"
+  },
+  {
+    "iata": "HSZ",
+    "name": "Hsinchu Air Base",
+    "city": "Hsinchu",
+    "country": "Taiwan",
+    "lat": 24.8180007935,
+    "lon": 120.939002991,
+    "province": "Others"
+  },
+  {
+    "iata": "HTN",
+    "name": "Hotan Airport",
+    "city": "Hotan",
+    "country": "China",
+    "lat": 37.03850173950195,
+    "lon": 79.86489868164062,
+    "province": "Others"
+  },
+  {
+    "iata": "HTT",
+    "name": "Huatugou Airport",
+    "city": "Mengnai",
+    "country": "China",
+    "lat": 38.201984,
+    "lon": 90.841495,
+    "province": "Others"
+  },
+  {
+    "iata": "HUN",
+    "name": "Hualien Airport",
+    "city": "Hualien",
+    "country": "Taiwan",
+    "lat": 24.023099899291992,
+    "lon": 121.61799621582031,
+    "province": "Others"
+  },
+  {
+    "iata": "HUO",
+    "name": "Holingol Huolinhe Airport",
+    "city": "Holingol",
+    "country": "China",
+    "lat": 45.487222,
+    "lon": 119.407222,
+    "province": "Others"
+  },
+  {
+    "iata": "HUZ",
+    "name": "Huizhou Airport",
+    "city": "Huizhou",
+    "country": "China",
+    "lat": 23.0499992371,
+    "lon": 114.599998474,
+    "province": "Guangdong"
+  },
+  {
+    "iata": "HXD",
+    "name": "Delingha Airport",
+    "city": "Haixi",
+    "country": "China",
+    "lat": 37.125286,
+    "lon": 97.268658,
+    "province": "Others"
+  },
+  {
+    "iata": "HYN",
+    "name": "Huangyan Luqiao Airport",
+    "city": "Huangyan",
+    "country": "China",
+    "lat": 28.56220054626465,
+    "lon": 121.42900085449219,
+    "province": "Jilin"
+  },
+  {
+    "iata": "HZG",
+    "name": "Hanzhong Chenggu Airport",
+    "city": "Hanzhong",
+    "country": "China",
+    "lat": 33.134136,
+    "lon": 107.206014,
+    "province": "Shaanxi"
+  },
+  {
+    "iata": "HZH",
+    "name": "Liping Airport",
+    "city": "Liping",
+    "country": "China",
+    "lat": 26.32217,
+    "lon": 109.1499,
+    "province": "Guizhou"
+  },
+  {
+    "iata": "IQM",
+    "name": "Qiemo Yudu Airport",
+    "city": "Qiemo",
+    "country": "China",
+    "lat": 38.233611,
+    "lon": 85.465556,
+    "province": "Xinjiang"
+  },
+  {
+    "iata": "IQN",
+    "name": "Qingyang Airport",
+    "city": "Qingyang",
+    "country": "China",
+    "lat": 35.799702,
+    "lon": 107.602997,
+    "province": "Shandong"
+  },
+  {
+    "iata": "JDZ",
+    "name": "Jingdezhen Airport",
+    "city": "Jingdezhen",
+    "country": "China",
+    "lat": 29.3386001587,
+    "lon": 117.176002502,
+    "province": "Jiangxi"
+  },
+  {
+    "iata": "JGD",
+    "name": "Jiagedaqi Airport",
+    "city": "Jiagedaqi District",
+    "country": "China",
+    "lat": 50.371389,
+    "lon": 124.1175,
+    "province": "Inner Mongolia"
+  },
+  {
+    "iata": "JGN",
+    "name": "Jiayuguan Airport",
+    "city": "Jiayuguan",
+    "country": "China",
+    "lat": 39.856899,
+    "lon": 98.3414,
+    "province": "Gansu"
+  },
+  {
+    "iata": "JGS",
+    "name": "Jinggangshan Airport",
+    "city": "Jian",
+    "country": "China",
+    "lat": 26.856899261499997,
+    "lon": 114.736999512,
+    "province": "Yunnan"
+  },
+  {
+    "iata": "JHG",
+    "name": "Xishuangbanna Gasa Airport",
+    "city": "Jinghonggasa",
+    "country": "China",
+    "lat": 21.973899841308594,
+    "lon": 100.76000213623047,
+    "province": "Yunnan"
+  },
+  {
+    "iata": "JIC",
+    "name": "Jinchuan Airport",
+    "city": "Jinchuan",
+    "country": "China",
+    "lat": 38.542222222199996,
+    "lon": 102.348333333,
+    "province": "Others"
+  },
+  {
+    "iata": "JIQ",
+    "name": "Qianjiang Wulingshan Airport",
+    "city": "Qianjiang",
+    "country": "China",
+    "lat": 29.5133333333,
+    "lon": 108.831111111,
+    "province": "Hubei"
+  },
+  {
+    "iata": "JIU",
+    "name": "Jiujiang Lushan Airport",
+    "city": "Jiujiang",
+    "country": "China",
+    "lat": 29.476944,
+    "lon": 115.801111,
+    "province": "Jiangxi"
+  },
+  {
+    "iata": "JJN",
+    "name": "Quanzhou Jinjiang International Airport",
+    "city": "Quanzhou",
+    "country": "China",
+    "lat": 24.7964,
+    "lon": 118.589996,
+    "province": "Fujian"
+  },
+  {
+    "iata": "JMJ",
+    "name": "Lancang Jingmai Airport",
+    "city": "Lancang Lahu",
+    "country": "China",
+    "lat": 22.415833,
+    "lon": 99.786389,
+    "province": "Jiangsu"
+  },
+  {
+    "iata": "JMU",
+    "name": "Jiamusi Airport",
+    "city": "Jiamusi",
+    "country": "China",
+    "lat": 46.84339904789999,
+    "lon": 130.464996338,
+    "province": "Heilongjiang"
+  },
+  {
+    "iata": "JNG",
+    "name": "Jining Qufu Airport",
+    "city": "Jining",
+    "country": "China",
+    "lat": 35.292778,
+    "lon": 116.346667,
+    "province": "Shandong"
+  },
+  {
+    "iata": "JNZ",
+    "name": "Jinzhou Airport",
+    "city": "Jinzhou",
+    "country": "China",
+    "lat": 41.10139846801758,
+    "lon": 121.06199645996094,
+    "province": "Liaoning"
+  },
+  {
+    "iata": "JSJ",
+    "name": "Jiansanjiang Airport",
+    "city": "Jiansanjiang",
+    "country": "China",
+    "lat": 47.11,
+    "lon": 132.660278,
+    "province": "Chongqing"
+  },
+  {
+    "iata": "JUH",
+    "name": "Jiuhuashan Airport",
+    "city": "Chizhou",
+    "country": "China",
+    "lat": 30.7403,
+    "lon": 117.6856,
+    "province": "Anhui"
+  },
+  {
+    "iata": "JUZ",
+    "name": "Quzhou Airport",
+    "city": "Quzhou",
+    "country": "China",
+    "lat": 28.965799,
+    "lon": 118.899002,
+    "province": "Zhejiang"
+  },
+  {
+    "iata": "JXA",
+    "name": "Jixi Xingkaihu Airport",
+    "city": "Jixi",
+    "country": "China",
+    "lat": 45.293,
+    "lon": 131.193,
+    "province": "Heilongjiang"
+  },
+  {
+    "iata": "JZH",
+    "name": "Jiuzhai Huanglong Airport",
+    "city": "Jiuzhaigou",
+    "country": "China",
+    "lat": 32.8533333333,
+    "lon": 103.682222222,
+    "province": "Others"
+  },
+  {
+    "iata": "KCA",
+    "name": "Kuqa Airport",
+    "city": "Kuqa",
+    "country": "China",
+    "lat": 41.677856,
+    "lon": 82.872917,
+    "province": "Others"
+  },
+  {
+    "iata": "KGT",
+    "name": "Kangding Airport",
+    "city": "Kangding",
+    "country": "China",
+    "lat": 30.1575,
+    "lon": 101.734722,
+    "province": "Sichuan"
+  },
+  {
+    "iata": "KHG",
+    "name": "Kashgar Airport",
+    "city": "Kashi",
+    "country": "China",
+    "lat": 39.5429000854,
+    "lon": 76.0199966431,
+    "province": "Others"
+  },
+  {
+    "iata": "KHH",
+    "name": "Kaohsiung International Airport",
+    "city": "Kaohsiung",
+    "country": "Taiwan",
+    "lat": 22.57710075378418,
+    "lon": 120.3499984741211,
+    "province": "Others"
+  },
+  {
+    "iata": "KHN",
+    "name": "Nanchang Changbei International Airport",
+    "city": "Nanchang",
+    "country": "China",
+    "lat": 28.864999771118164,
+    "lon": 115.9000015258789,
+    "province": "Jiangxi"
+  },
+  {
+    "iata": "KJH",
+    "name": "Kaili Airport",
+    "city": "Kaili",
+    "country": "China",
+    "lat": 26.972,
+    "lon": 107.988,
+    "province": "Guizhou"
+  },
+  {
+    "iata": "KJI",
+    "name": "Kanas Airport",
+    "city": "Burqin",
+    "country": "China",
+    "lat": 48.2223,
+    "lon": 86.9959,
+    "province": "Xinjiang"
+  },
+  {
+    "iata": "KMG",
+    "name": "Kunming Changshui International Airport",
+    "city": "Kunming",
+    "country": "China",
+    "lat": 25.1019444,
+    "lon": 102.9291667,
+    "province": "Yunnan"
+  },
+  {
+    "iata": "KNH",
+    "name": "Kinmen Airport",
+    "city": "Kinmen",
+    "country": "Taiwan",
+    "lat": 24.4279,
+    "lon": 118.359001,
+    "province": "Others"
+  },
+  {
+    "iata": "KOW",
+    "name": "Ganzhou Airport",
+    "city": "Ganzhou",
+    "country": "China",
+    "lat": 25.853333,
+    "lon": 114.778889,
+    "province": "Jiangxi"
+  },
+  {
+    "iata": "KRL",
+    "name": "Korla Airport",
+    "city": "Korla",
+    "country": "China",
+    "lat": 41.69779968261719,
+    "lon": 86.12889862060547,
+    "province": "Xinjiang"
+  },
+  {
+    "iata": "KRY",
+    "name": "Karamay Airport",
+    "city": "Karamay",
+    "country": "China",
+    "lat": 45.46655,
+    "lon": 84.9527,
+    "province": "Xinjiang"
+  },
+  {
+    "iata": "KWE",
+    "name": "Longdongbao Airport",
+    "city": "Guiyang",
+    "country": "China",
+    "lat": 26.53849983215332,
+    "lon": 106.8010025024414,
+    "province": "Guizhou"
+  },
+  {
+    "iata": "KWL",
+    "name": "Guilin Liangjiang International Airport",
+    "city": "Guilin",
+    "country": "China",
+    "lat": 25.21809959411621,
+    "lon": 110.03900146484375,
+    "province": "Guangxi"
+  },
+  {
+    "iata": "KYD",
+    "name": "Lanyu Airport",
+    "city": "Lanyu",
+    "country": "Taiwan",
+    "lat": 22.027000427246094,
+    "lon": 121.53500366210938,
+    "province": "Others"
+  },
+  {
+    "iata": "LCX",
+    "name": "Longyan Guanzhishan Airport",
+    "city": "Longyan",
+    "country": "China",
+    "lat": 25.6746997833,
+    "lon": 116.747001648,
+    "province": "Fujian"
+  },
+  {
+    "iata": "LDS",
+    "name": "Lindu Airport",
+    "city": "Yinchun",
+    "country": "China",
+    "lat": 47.7520555556,
+    "lon": 129.019125,
+    "province": "Others"
+  },
+  {
+    "iata": "LFQ",
+    "name": "Linfen Qiaoli Airport",
+    "city": "LINFEN",
+    "country": "China",
+    "lat": 36.132629,
+    "lon": 111.641236,
+    "province": "Shanxi"
+  },
+  {
+    "iata": "LHK",
+    "name": "Guangzhou MR Air Base",
+    "city": "Guanghua",
+    "country": "China",
+    "lat": 32.389400482177734,
+    "lon": 111.69499969482422,
+    "province": "Others"
+  },
+  {
+    "iata": "LHW",
+    "name": "Lanzhou Zhongchuan Airport",
+    "city": "Lanzhou",
+    "country": "China",
+    "lat": 36.5152015686,
+    "lon": 103.620002747,
+    "province": "Gansu"
+  },
+  {
+    "iata": "LJG",
+    "name": "Lijiang Airport",
+    "city": "Lijiang",
+    "country": "China",
+    "lat": 26.6800003052,
+    "lon": 100.246002197,
+    "province": "Yunnan"
+  },
+  {
+    "iata": "LLB",
+    "name": "Libo Airport",
+    "city": "Libo",
+    "country": "China",
+    "lat": 25.4525,
+    "lon": 107.961667,
+    "province": "Others"
+  },
+  {
+    "iata": "LLF",
+    "name": "Lingling Airport",
+    "city": "Yongzhou",
+    "country": "China",
+    "lat": 26.338661,
+    "lon": 111.610043,
+    "province": "Hunan"
+  },
+  {
+    "iata": "LLV",
+    "name": "Lüliang Airport",
+    "city": "Lvliang",
+    "country": "China",
+    "lat": 37.683333,
+    "lon": 111.142778,
+    "province": "Others"
+  },
+  {
+    "iata": "LNJ",
+    "name": "Lintsang Airfield",
+    "city": "Lincang",
+    "country": "China",
+    "lat": 23.738100051900002,
+    "lon": 100.025001526,
+    "province": "Yunnan"
+  },
+  {
+    "iata": "LNL",
+    "name": "Longnan Chengzhou Airport",
+    "city": "Longnan",
+    "country": "China",
+    "lat": 33.788,
+    "lon": 105.797,
+    "province": "Gansu"
+  },
+  {
+    "iata": "LPF",
+    "name": "Liupanshui Yuezhao Airport",
+    "city": "Liupanshui",
+    "country": "China",
+    "lat": 26.609417,
+    "lon": 104.979,
+    "province": "Guizhou"
+  },
+  {
+    "iata": "LUM",
+    "name": "Mangshi Airport",
+    "city": "Luxi",
+    "country": "China",
+    "lat": 24.4011,
+    "lon": 98.5317,
+    "province": "Others"
+  },
+  {
+    "iata": "LXA",
+    "name": "Lhasa Gonggar Airport",
+    "city": "Lhasa",
+    "country": "China",
+    "lat": 29.2978000641,
+    "lon": 90.91190338130001,
+    "province": "Tibet"
+  },
+  {
+    "iata": "LYA",
+    "name": "Luoyang Airport",
+    "city": "Luoyang",
+    "country": "China",
+    "lat": 34.741100311299995,
+    "lon": 112.388000488,
+    "province": "Henan"
+  },
+  {
+    "iata": "LYG",
+    "name": "Lianyungang Airport",
+    "city": "Lianyungang",
+    "country": "China",
+    "lat": 34.571667,
+    "lon": 118.873611,
+    "province": "Jiangsu"
+  },
+  {
+    "iata": "LYI",
+    "name": "Shubuling Airport",
+    "city": "Linyi",
+    "country": "China",
+    "lat": 35.04610061645508,
+    "lon": 118.41200256347656,
+    "province": "Shandong"
+  },
+  {
+    "iata": "LZH",
+    "name": "Liuzhou Bailian Airport",
+    "city": "Liuzhou",
+    "country": "China",
+    "lat": 24.2075,
+    "lon": 109.390999,
+    "province": "Guangxi"
+  },
+  {
+    "iata": "LZN",
+    "name": "Matsu Nangan Airport",
+    "city": "Matsu Islands",
+    "country": "Taiwan",
+    "lat": 26.1598,
+    "lon": 119.958,
+    "province": "Others"
+  },
+  {
+    "iata": "LZO",
+    "name": "Luzhou Airport",
+    "city": "Luzhou",
+    "country": "China",
+    "lat": 28.85219955444336,
+    "lon": 105.39299774169922,
+    "province": "Sichuan"
+  },
+  {
+    "iata": "LZY",
+    "name": "Nyingchi Airport",
+    "city": "Nyingchi",
+    "country": "China",
+    "lat": 29.303300857543945,
+    "lon": 94.33529663085938,
+    "province": "Tibet"
+  },
+  {
+    "iata": "MDG",
+    "name": "Mudanjiang Hailang International Airport",
+    "city": "Mudanjiang",
+    "country": "China",
+    "lat": 44.5241012573,
+    "lon": 129.569000244,
+    "province": "Heilongjiang"
+  },
+  {
+    "iata": "MFK",
+    "name": "Matsu Beigan Airport",
+    "city": "Matsu Islands",
+    "country": "Taiwan",
+    "lat": 26.224199,
+    "lon": 120.002998,
+    "province": "Others"
+  },
+  {
+    "iata": "MFM",
+    "name": "Macau International Airport",
+    "city": "Macau",
+    "country": "Macau",
+    "lat": 22.149599,
+    "lon": 113.592003,
+    "province": "Others"
+  },
+  {
+    "iata": "MIG",
+    "name": "Mianyang Airport",
+    "city": "Mianyang",
+    "country": "China",
+    "lat": 31.4281005859375,
+    "lon": 104.74099731445312,
+    "province": "Sichuan"
+  },
+  {
+    "iata": "MXZ",
+    "name": "Meixian Airport",
+    "city": "Meixian",
+    "country": "China",
+    "lat": 24.350000381469727,
+    "lon": 116.13300323486328,
+    "province": "Others"
+  },
+  {
+    "iata": "MZG",
+    "name": "Makung Airport",
+    "city": "Makung",
+    "country": "Taiwan",
+    "lat": 23.568700790405273,
+    "lon": 119.62799835205078,
+    "province": "Others"
+  },
+  {
+    "iata": "NAO",
+    "name": "Nanchong Airport",
+    "city": "Nanchong",
+    "country": "China",
+    "lat": 30.79545,
+    "lon": 106.1626,
+    "province": "Sichuan"
+  },
+  {
+    "iata": "NAY",
+    "name": "Beijing Nanyuan Airport",
+    "city": "Beijing",
+    "country": "China",
+    "lat": 39.782798767089844,
+    "lon": 116.38800048828125,
+    "province": "Beijing"
+  },
+  {
+    "iata": "NBS",
+    "name": "Changbaishan Airport",
+    "city": "Baishan",
+    "country": "China",
+    "lat": 42.066944,
+    "lon": 127.602222,
+    "province": "Jilin"
+  },
+  {
+    "iata": "NDG",
+    "name": "Qiqihar Sanjiazi Airport",
+    "city": "Qiqihar",
+    "country": "China",
+    "lat": 47.239601135253906,
+    "lon": 123.91799926757812,
+    "province": "Heilongjiang"
+  },
+  {
+    "iata": "NGB",
+    "name": "Ningbo Lishe International Airport",
+    "city": "Ninbo",
+    "country": "China",
+    "lat": 29.82670021057129,
+    "lon": 121.46199798583984,
+    "province": "Others"
+  },
+  {
+    "iata": "NGQ",
+    "name": "Ngari Gunsa Airport",
+    "city": "Shiquanhe",
+    "country": "China",
+    "lat": 32.1,
+    "lon": 80.0530555556,
+    "province": "Shaanxi"
+  },
+  {
+    "iata": "NKG",
+    "name": "Nanjing Lukou Airport",
+    "city": "Nanjing",
+    "country": "China",
+    "lat": 31.742000579833984,
+    "lon": 118.86199951171875,
+    "province": "Jiangsu"
+  },
+  {
+    "iata": "NLH",
+    "name": "Ninglang Luguhu Airport",
+    "city": "Ninglang",
+    "country": "China",
+    "lat": 27.5403,
+    "lon": 100.7593,
+    "province": "Others"
+  },
+  {
+    "iata": "NLT",
+    "name": "Xinyuan Nalati Airport",
+    "city": "Xinyuan",
+    "country": "China",
+    "lat": 43.4318,
+    "lon": 83.3786,
+    "province": "Xinjiang"
+  },
+  {
+    "iata": "NNG",
+    "name": "Nanning Wuxu Airport",
+    "city": "Nanning",
+    "country": "China",
+    "lat": 22.608299255371094,
+    "lon": 108.1719970703125,
+    "province": "Guangxi"
+  },
+  {
+    "iata": "NNY",
+    "name": "Nanyang Jiangying Airport",
+    "city": "Nanyang",
+    "country": "China",
+    "lat": 32.980801,
+    "lon": 112.614998,
+    "province": "Henan"
+  },
+  {
+    "iata": "NZH",
+    "name": "Manzhouli Xijiao Airport",
+    "city": "Manzhouli",
+    "country": "China",
+    "lat": 49.566667,
+    "lon": 117.33,
+    "province": "Inner Mongolia"
+  },
+  {
+    "iata": "NZL",
+    "name": "Chengjisihan Airport",
+    "city": "Zhalantun",
+    "country": "China",
+    "lat": 47.865833,
+    "lon": 122.767503,
+    "province": "Inner Mongolia"
+  },
+  {
+    "iata": "OHE",
+    "name": "Gu-Lian Airport",
+    "city": "Mohe County",
+    "country": "China",
+    "lat": 52.912777777799995,
+    "lon": 122.43,
+    "province": "Others"
+  },
+  {
+    "iata": "PEK",
+    "name": "Beijing Capital International Airport",
+    "city": "Beijing",
+    "country": "China",
+    "lat": 40.080101013183594,
+    "lon": 116.58499908447266,
+    "province": "Beijing"
+  },
+  {
+    "iata": "PIF",
+    "name": "Pingtung North Airport",
+    "city": "Pingtung",
+    "country": "Taiwan",
+    "lat": 22.700199127197266,
+    "lon": 120.48200225830078,
+    "province": "Others"
+  },
+  {
+    "iata": "PKX",
+    "name": "Beijing Daxing International Airport",
+    "city": "Beijing",
+    "country": "China",
+    "lat": 39.509945,
+    "lon": 116.41092,
+    "province": "Beijing"
+  },
+  {
+    "iata": "PVG",
+    "name": "Shanghai Pudong International Airport",
+    "city": "Shanghai",
+    "country": "China",
+    "lat": 31.143400192260742,
+    "lon": 121.80500030517578,
+    "province": "Shanghai"
+  },
+  {
+    "iata": "PZI",
+    "name": "Bao'anying Airport",
+    "city": "Panzhihua",
+    "country": "China",
+    "lat": 26.54,
+    "lon": 101.79852,
+    "province": "Sichuan"
+  },
+  {
+    "iata": "QSZ",
+    "name": "Yeerqiang Airport",
+    "city": "Yarkant",
+    "country": "China",
+    "lat": 38.281055,
+    "lon": 77.075192,
+    "province": "Others"
+  },
+  {
+    "iata": "RHT",
+    "name": "Alxa Right Banner Badanjilin Airport",
+    "city": "Alxa Right Banner",
+    "country": "China",
+    "lat": 39.225,
+    "lon": 101.546,
+    "province": "Others"
+  },
+  {
+    "iata": "RIZ",
+    "name": "Rizhao Shanzihe Airport",
+    "city": "Rizhao",
+    "country": "China",
+    "lat": 35.405033,
+    "lon": 119.324403,
+    "province": "Shandong"
+  },
+  {
+    "iata": "RKZ",
+    "name": "Shigatse Air Base",
+    "city": "Shigatse",
+    "country": "China",
+    "lat": 29.3519,
+    "lon": 89.311401,
+    "province": "Others"
+  },
+  {
+    "iata": "RLK",
+    "name": "Bayannur Tianjitai Airport",
+    "city": "Bayannur",
+    "country": "China",
+    "lat": 40.926,
+    "lon": 107.7428,
+    "province": "Heilongjiang"
+  },
+  {
+    "iata": "RMQ",
+    "name": "Taichung Ching Chuang Kang Airport",
+    "city": "Taichung",
+    "country": "Taiwan",
+    "lat": 24.264699935913086,
+    "lon": 120.62100219726562,
+    "province": "Others"
+  },
+  {
+    "iata": "RUG",
+    "name": "Rugao Air Base",
+    "city": "Rugao",
+    "country": "China",
+    "lat": 32.25788497924805,
+    "lon": 120.50165557861328,
+    "province": "Jiangsu"
+  },
+  {
+    "iata": "SHA",
+    "name": "Shanghai Hongqiao International Airport",
+    "city": "Shanghai",
+    "country": "China",
+    "lat": 31.197900772094727,
+    "lon": 121.33599853515625,
+    "province": "Shanghai"
+  },
+  {
+    "iata": "SHE",
+    "name": "Taoxian Airport",
+    "city": "Shenyang",
+    "country": "China",
+    "lat": 41.639801025390625,
+    "lon": 123.48300170898438,
+    "province": "Liaoning"
+  },
+  {
+    "iata": "SHP",
+    "name": "Shanhaiguan Airport",
+    "city": "Qinhuangdao",
+    "country": "China",
+    "lat": 39.968102,
+    "lon": 119.731003,
+    "province": "Hebei"
+  },
+  {
+    "iata": "SIA",
+    "name": "Xi'an Xiguan Airport",
+    "city": "Xi\\'AN",
+    "country": "China",
+    "lat": 34.376701,
+    "lon": 109.120003,
+    "province": "Shaanxi"
+  },
+  {
+    "iata": "SJW",
+    "name": "Shijiazhuang Daguocun International Airport",
+    "city": "Shijiazhuang",
+    "country": "China",
+    "lat": 38.28070068359375,
+    "lon": 114.6969985961914,
+    "province": "Hebei"
+  },
+  {
+    "iata": "SQD",
+    "name": "Shangrao Sanqingshan Airport",
+    "city": "Shangrao",
+    "country": "China",
+    "lat": 28.3797,
+    "lon": 117.9643,
+    "province": "Jiangxi"
+  },
+  {
+    "iata": "SQJ",
+    "name": "Shaxian Airport",
+    "city": "Sanming",
+    "country": "China",
+    "lat": 26.4263,
+    "lon": 117.8336,
+    "province": "Fujian"
+  },
+  {
+    "iata": "SWA",
+    "name": "Jieyang Chaoshan International Airport",
+    "city": "Shantou",
+    "country": "China",
+    "lat": 23.552,
+    "lon": 116.5033,
+    "province": "Guangdong"
+  },
+  {
+    "iata": "SXJ",
+    "name": "Shanshan Airport",
+    "city": "Shanshan",
+    "country": "China",
+    "lat": 42.91170120239258,
+    "lon": 90.24749755859375,
+    "province": "Liaoning"
+  },
+  {
+    "iata": "SYM",
+    "name": "Pu'er Simao Airport",
+    "city": "Simao",
+    "country": "China",
+    "lat": 22.793301,
+    "lon": 100.959,
+    "province": "Yunnan"
+  },
+  {
+    "iata": "SYX",
+    "name": "Sanya Phoenix International Airport",
+    "city": "Sanya",
+    "country": "China",
+    "lat": 18.302900314331055,
+    "lon": 109.41200256347656,
+    "province": "Hainan"
+  },
+  {
+    "iata": "SZV",
+    "name": "Suzhou Guangfu Airport",
+    "city": "Suzhou",
+    "country": "China",
+    "lat": 31.2631,
+    "lon": 120.401001,
+    "province": "Anhui"
+  },
+  {
+    "iata": "SZX",
+    "name": "Shenzhen Bao'an International Airport",
+    "city": "Shenzhen",
+    "country": "China",
+    "lat": 22.639299392700195,
+    "lon": 113.81099700927734,
+    "province": "Guangdong"
+  },
+  {
+    "iata": "TAO",
+    "name": "Liuting Airport",
+    "city": "Qingdao",
+    "country": "China",
+    "lat": 36.2661018372,
+    "lon": 120.374000549,
+    "province": "Shandong"
+  },
+  {
+    "iata": "TCG",
+    "name": "Tacheng Airport",
+    "city": "Tacheng",
+    "country": "China",
+    "lat": 46.67250061035156,
+    "lon": 83.3407974243164,
+    "province": "Xinjiang"
+  },
+  {
+    "iata": "TCZ",
+    "name": "Tengchong Tuofeng Airport",
+    "city": "Tengchong",
+    "country": "China",
+    "lat": 24.9380555556,
+    "lon": 98.48583333330001,
+    "province": "Others"
+  },
+  {
+    "iata": "TEN",
+    "name": "Tongren Fenghuang Airport",
+    "city": "Tongren",
+    "country": "China",
+    "lat": 27.883333,
+    "lon": 109.308889,
+    "province": "Guizhou"
+  },
+  {
+    "iata": "TGO",
+    "name": "Tongliao Airport",
+    "city": "Tongliao",
+    "country": "China",
+    "lat": 43.556702,
+    "lon": 122.199997,
+    "province": "Inner Mongolia"
+  },
+  {
+    "iata": "THQ",
+    "name": "Tianshui Maijishan Airport",
+    "city": "Tianshui",
+    "country": "China",
+    "lat": 34.5593986511,
+    "lon": 105.86000061,
+    "province": "Gansu"
+  },
+  {
+    "iata": "TLQ",
+    "name": "Turpan Jiaohe Airport",
+    "city": "Turpan",
+    "country": "China",
+    "lat": 43.0308,
+    "lon": 89.0987,
+    "province": "Xinjiang"
+  },
+  {
+    "iata": "TNA",
+    "name": "Yaoqiang Airport",
+    "city": "Jinan",
+    "country": "China",
+    "lat": 36.857200622558594,
+    "lon": 117.21600341796875,
+    "province": "Shandong"
+  },
+  {
+    "iata": "TNH",
+    "name": "Tonghua Sanyuanpu Airport",
+    "city": "Tonghua",
+    "country": "China",
+    "lat": 42.2538888889,
+    "lon": 125.703333333,
+    "province": "Jilin"
+  },
+  {
+    "iata": "TNN",
+    "name": "Tainan Airport",
+    "city": "Tainan",
+    "country": "Taiwan",
+    "lat": 22.95039939880371,
+    "lon": 120.20600128173828,
+    "province": "Others"
+  },
+  {
+    "iata": "TPE",
+    "name": "Taiwan Taoyuan International Airport",
+    "city": "Taipei",
+    "country": "Taiwan",
+    "lat": 25.0777,
+    "lon": 121.233002,
+    "province": "Others"
+  },
+  {
+    "iata": "TSA",
+    "name": "Taipei Songshan Airport",
+    "city": "Taipei",
+    "country": "Taiwan",
+    "lat": 25.069400787353516,
+    "lon": 121.552001953125,
+    "province": "Others"
+  },
+  {
+    "iata": "TSN",
+    "name": "Tianjin Binhai International Airport",
+    "city": "Tianjin",
+    "country": "China",
+    "lat": 39.124401092499994,
+    "lon": 117.346000671,
+    "province": "Tianjin"
+  },
+  {
+    "iata": "TTT",
+    "name": "Taitung Airport",
+    "city": "Fengnin",
+    "country": "Taiwan",
+    "lat": 22.7549991607666,
+    "lon": 121.10199737548828,
+    "province": "Others"
+  },
+  {
+    "iata": "TXG",
+    "name": "Taichung Airport",
+    "city": "Taichung",
+    "country": "Taiwan",
+    "lat": 24.18630027770996,
+    "lon": 120.65399932861328,
+    "province": "Others"
+  },
+  {
+    "iata": "TXN",
+    "name": "Tunxi International Airport",
+    "city": "Huangshan",
+    "country": "China",
+    "lat": 29.733299255371094,
+    "lon": 118.25599670410156,
+    "province": "Anhui"
+  },
+  {
+    "iata": "TYN",
+    "name": "Taiyuan Wusu Airport",
+    "city": "Taiyuan",
+    "country": "China",
+    "lat": 37.74689865112305,
+    "lon": 112.62799835205078,
+    "province": "Shanxi"
+  },
+  {
+    "iata": "UCB",
+    "name": "Ulanqab Jining Airport",
+    "city": "Wulanchabu",
+    "country": "China",
+    "lat": 41.129722,
+    "lon": 113.108056,
+    "province": "Others"
+  },
+  {
+    "iata": "URC",
+    "name": "Ürümqi Diwopu International Airport",
+    "city": "Urumqi",
+    "country": "China",
+    "lat": 43.907100677490234,
+    "lon": 87.47419738769531,
+    "province": "Xinjiang"
+  },
+  {
+    "iata": "UYN",
+    "name": "Yulin Yuyang Airport",
+    "city": "Yulin",
+    "country": "China",
+    "lat": 38.35971,
+    "lon": 109.590927,
+    "province": "Guangxi"
+  },
+  {
+    "iata": "WDS",
+    "name": "Shiyan Wudangshan Airport",
+    "city": "Shiyan",
+    "country": "China",
+    "lat": 32.591667,
+    "lon": 110.907778,
+    "province": "Hubei"
+  },
+  {
+    "iata": "WEF",
+    "name": "Weifang Airport",
+    "city": "Weifang",
+    "country": "China",
+    "lat": 36.646702,
+    "lon": 119.119003,
+    "province": "Shandong"
+  },
+  {
+    "iata": "WEH",
+    "name": "Weihai Airport",
+    "city": "Weihai",
+    "country": "China",
+    "lat": 37.18709945678711,
+    "lon": 122.22899627685547,
+    "province": "Shandong"
+  },
+  {
+    "iata": "WGN",
+    "name": "Shaoyang Wugang Airport",
+    "city": "Shaoyang",
+    "country": "China",
+    "lat": 26.802,
+    "lon": 110.642,
+    "province": "Hunan"
+  },
+  {
+    "iata": "WHU",
+    "name": "Wuhu Air Base",
+    "city": "Wuhu",
+    "country": "China",
+    "lat": 31.3906,
+    "lon": 118.408997,
+    "province": "Anhui"
+  },
+  {
+    "iata": "WMT",
+    "name": "Zunyi Maotai Airport",
+    "city": "Zunyi",
+    "country": "China",
+    "lat": 27.81638,
+    "lon": 106.33268,
+    "province": "Guizhou"
+  },
+  {
+    "iata": "WNZ",
+    "name": "Wenzhou Longwan International Airport",
+    "city": "Wenzhou",
+    "country": "China",
+    "lat": 27.912201,
+    "lon": 120.851997,
+    "province": "Zhejiang"
+  },
+  {
+    "iata": "WOT",
+    "name": "Wang-an Airport",
+    "city": "Wang An",
+    "country": "Taiwan",
+    "lat": 23.367372512817383,
+    "lon": 119.50277709960938,
+    "province": "Others"
+  },
+  {
+    "iata": "WUA",
+    "name": "Wuhai Airport",
+    "city": "Wuhai",
+    "country": "China",
+    "lat": 39.7934,
+    "lon": 106.7993,
+    "province": "Inner Mongolia"
+  },
+  {
+    "iata": "WUH",
+    "name": "Wuhan Tianhe International Airport",
+    "city": "Wuhan",
+    "country": "China",
+    "lat": 30.7838,
+    "lon": 114.208,
+    "province": "Hubei"
+  },
+  {
+    "iata": "WUS",
+    "name": "Nanping Wuyishan Airport",
+    "city": "Wuyishan",
+    "country": "China",
+    "lat": 27.7019,
+    "lon": 118.000999,
+    "province": "Fujian"
+  },
+  {
+    "iata": "WUT",
+    "name": "Xinzhou Wutaishan Airport",
+    "city": "Xinzhou",
+    "country": "China",
+    "lat": 38.597456,
+    "lon": 112.969173,
+    "province": "Shanxi"
+  },
+  {
+    "iata": "WUX",
+    "name": "Sunan Shuofang International Airport",
+    "city": "Wuxi",
+    "country": "China",
+    "lat": 31.494400024399997,
+    "lon": 120.429000854,
+    "province": "Jiangsu"
+  },
+  {
+    "iata": "WUZ",
+    "name": "Wuzhou Changzhoudao Airport",
+    "city": "Wuzhou",
+    "country": "China",
+    "lat": 23.456699,
+    "lon": 111.248001,
+    "province": "Guangxi"
+  },
+  {
+    "iata": "WXN",
+    "name": "Wanxian Airport",
+    "city": "Wanxian",
+    "country": "China",
+    "lat": 30.8017,
+    "lon": 108.433,
+    "province": "Chongqing"
+  },
+  {
+    "iata": "XEN",
+    "name": "Xingcheng Air Base",
+    "city": "",
+    "country": "China",
+    "lat": 40.580299377399996,
+    "lon": 120.697998047,
+    "province": "Liaoning"
+  },
+  {
+    "iata": "XFN",
+    "name": "Xiangyang Liuji Airport",
+    "city": "Xiangfan",
+    "country": "China",
+    "lat": 32.1506,
+    "lon": 112.291,
+    "province": "Others"
+  },
+  {
+    "iata": "XIC",
+    "name": "Xichang Qingshan Airport",
+    "city": "Xichang",
+    "country": "China",
+    "lat": 27.989099502563477,
+    "lon": 102.18399810791016,
+    "province": "Sichuan"
+  },
+  {
+    "iata": "XIL",
+    "name": "Xilinhot Airport",
+    "city": "Xilinhot",
+    "country": "China",
+    "lat": 43.91559982299805,
+    "lon": 115.96399688720703,
+    "province": "Inner Mongolia"
+  },
+  {
+    "iata": "XIY",
+    "name": "Xi'an Xianyang International Airport",
+    "city": "Xi'an",
+    "country": "China",
+    "lat": 34.447102,
+    "lon": 108.751999,
+    "province": "Shaanxi"
+  },
+  {
+    "iata": "XMN",
+    "name": "Xiamen Gaoqi International Airport",
+    "city": "Xiamen",
+    "country": "China",
+    "lat": 24.54400062561035,
+    "lon": 118.12799835205078,
+    "province": "Fujian"
+  },
+  {
+    "iata": "XNN",
+    "name": "Xining Caojiabu Airport",
+    "city": "Xining",
+    "country": "China",
+    "lat": 36.5275,
+    "lon": 102.042999,
+    "province": "Qinghai"
+  },
+  {
+    "iata": "XUZ",
+    "name": "Xuzhou Guanyin Airport",
+    "city": "Xuzhou",
+    "country": "China",
+    "lat": 34.059056,
+    "lon": 117.555278,
+    "province": "Jiangsu"
+  },
+  {
+    "iata": "YBP",
+    "name": "Yibin Caiba Airport",
+    "city": "Yibin",
+    "country": "China",
+    "lat": 28.8005555556,
+    "lon": 104.545,
+    "province": "Sichuan"
+  },
+  {
+    "iata": "YCU",
+    "name": "Yuncheng Guangong Airport",
+    "city": "Yuncheng",
+    "country": "China",
+    "lat": 35.116391,
+    "lon": 111.031388889,
+    "province": "Shanxi"
+  },
+  {
+    "iata": "YIC",
+    "name": "Yichun Mingyueshan Airport",
+    "city": "Yichun",
+    "country": "China",
+    "lat": 27.8025,
+    "lon": 114.3062,
+    "province": "Jiangxi"
+  },
+  {
+    "iata": "YIE",
+    "name": "Arxan Yi'ershi Airport",
+    "city": "Arxan",
+    "country": "China",
+    "lat": 47.3106,
+    "lon": 119.9117,
+    "province": "Others"
+  },
+  {
+    "iata": "YIH",
+    "name": "Yichang Sanxia Airport",
+    "city": "Yichang",
+    "country": "China",
+    "lat": 30.55655,
+    "lon": 111.479988,
+    "province": "Hubei"
+  },
+  {
+    "iata": "YIN",
+    "name": "Yining Airport",
+    "city": "Yining",
+    "country": "China",
+    "lat": 43.955799,
+    "lon": 81.330299,
+    "province": "Others"
+  },
+  {
+    "iata": "YIW",
+    "name": "Yiwu Airport",
+    "city": "Yiwu",
+    "country": "China",
+    "lat": 29.3446998596,
+    "lon": 120.031997681,
+    "province": "Zhejiang"
+  },
+  {
+    "iata": "YKH",
+    "name": "Yingkou Lanqi Airport",
+    "city": "Yingkou",
+    "country": "China",
+    "lat": 40.542524,
+    "lon": 122.3586,
+    "province": "Liaoning"
+  },
+  {
+    "iata": "YNJ",
+    "name": "Yanji Chaoyangchuan Airport",
+    "city": "Yanji",
+    "country": "China",
+    "lat": 42.8828010559,
+    "lon": 129.451004028,
+    "province": "Jilin"
+  },
+  {
+    "iata": "YNT",
+    "name": "Yantai Laishan Airport",
+    "city": "Yantai",
+    "country": "China",
+    "lat": 37.40169906616211,
+    "lon": 121.37200164794922,
+    "province": "Shandong"
+  },
+  {
+    "iata": "YNZ",
+    "name": "Yancheng Airport",
+    "city": "Yancheng",
+    "country": "China",
+    "lat": 33.425833,
+    "lon": 120.203056,
+    "province": "Jiangsu"
+  },
+  {
+    "iata": "YSQ",
+    "name": "Songyuan Chaganhu Airport",
+    "city": "Songyuan",
+    "country": "China",
+    "lat": 44.938114,
+    "lon": 124.550178,
+    "province": "Jilin"
+  },
+  {
+    "iata": "YTY",
+    "name": "Yangzhou Taizhou Airport",
+    "city": "Yangzhou",
+    "country": "China",
+    "lat": 32.5634,
+    "lon": 119.7198,
+    "province": "Jiangsu"
+  },
+  {
+    "iata": "YUA",
+    "name": "Yuanmou Air Base",
+    "city": "Yuanmou",
+    "country": "China",
+    "lat": 25.737499237061,
+    "lon": 101.88200378418,
+    "province": "Others"
+  },
+  {
+    "iata": "YUS",
+    "name": "Yushu Batang Airport",
+    "city": "Yushu",
+    "country": "China",
+    "lat": 32.836388888900004,
+    "lon": 97.0363888889,
+    "province": "Qinghai"
+  },
+  {
+    "iata": "YZY",
+    "name": "Zhangye Ganzhou Airport",
+    "city": "Zhangye",
+    "country": "China",
+    "lat": 38.8018989563,
+    "lon": 100.675003052,
+    "province": "Gansu"
+  },
+  {
+    "iata": "ZAT",
+    "name": "Zhaotong Airport",
+    "city": "Zhaotong",
+    "country": "China",
+    "lat": 27.325599670410156,
+    "lon": 103.75499725341797,
+    "province": "Yunnan"
+  },
+  {
+    "iata": "ZHA",
+    "name": "Zhanjiang Airport",
+    "city": "Zhanjiang",
+    "country": "China",
+    "lat": 21.214399,
+    "lon": 110.358002,
+    "province": "Guangdong"
+  },
+  {
+    "iata": "ZHY",
+    "name": "Zhongwei Shapotou Airport",
+    "city": "Zhongwei",
+    "country": "China",
+    "lat": 37.573125,
+    "lon": 105.154454,
+    "province": "Others"
+  },
+  {
+    "iata": "ZQZ",
+    "name": "Zhangjiakou Ningyuan Airport",
+    "city": "Zhangjiakou",
+    "country": "China",
+    "lat": 40.7386016846,
+    "lon": 114.930000305,
+    "province": "Hebei"
+  },
+  {
+    "iata": "ZUH",
+    "name": "Zhuhai Jinwan Airport",
+    "city": "Zhuhai",
+    "country": "China",
+    "lat": 22.006399,
+    "lon": 113.375999,
+    "province": "Guangdong"
+  },
+  {
+    "iata": "ZYI",
+    "name": "Zunyi Xinzhou Airport",
+    "city": "Zunyi",
+    "country": "China",
+    "lat": 27.5895,
+    "lon": 107.0007,
+    "province": "Guizhou"
+  }
+]
