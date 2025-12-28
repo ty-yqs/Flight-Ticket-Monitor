@@ -74,6 +74,8 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
     .foot{margin-top:14px;font-size:13px;color:var(--muted)}
     .hint{color:#888;font-size:13px}
   </style>
+  <!-- Element UI CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.13/lib/theme-chalk/index.css">
 </head>
 <body>
   <div class="wrap">
@@ -89,36 +91,45 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
         </div>
       </div>
 
-      <form id="subForm" action="subscribe.php" method="post" onsubmit="return prepareSubmit()">
-        <div class="row" style="margin-bottom:12px">
-          <div style="flex:1">
-            <label for="from_search"><?php echo htmlspecialchars($t('from_label')) ?></label>
-            <div class="searchable" id="from_search" data-name="from"></div>
-            <div class="small hint"><?php echo htmlspecialchars($t('from_hint')) ?></div>
+      <!-- Progressive-enhanced form: original native form kept for non-JS, Vue+Element UI will enhance when available -->
+      <form id="subForm" action="subscribe.php" method="post">
+        <div id="app-root">
+          <!-- Vue/Element will mount here and render enhanced form; fallback native inputs below will be kept hidden when Vue initializes -->
+        </div>
+
+        <!-- Fallback native inputs (kept for non-JS or server-side fallback) -->
+        <div id="native-fallback">
+          <div class="row" style="margin-bottom:12px">
+            <div style="flex:1">
+              <label for="from_search"><?php echo htmlspecialchars($t('from_label')) ?></label>
+              <div class="searchable" id="from_search" data-name="from"></div>
+              <div class="small hint"><?php echo htmlspecialchars($t('from_hint')) ?></div>
+            </div>
+            <div style="flex:1">
+              <label for="to_search"><?php echo htmlspecialchars($t('to_label')) ?></label>
+              <div class="searchable" id="to_search" data-name="to"></div>
+            </div>
           </div>
-          <div style="flex:1">
-            <label for="to_search"><?php echo htmlspecialchars($t('to_label')) ?></label>
-            <div class="searchable" id="to_search" data-name="to"></div>
+
+          <div style="display:flex;gap:12px;align-items:flex-end">
+            <div style="flex:1">
+              <label for="date"><?php echo htmlspecialchars($t('date_label')) ?></label>
+              <input id="date" name="date" type="date" required>
+              <div class="small hint"><?php echo htmlspecialchars($t('date_hint')) ?></div>
+            </div>
+
+            <div style="width:280px;min-width:160px">
+              <label for="email"><?php echo htmlspecialchars($t('email_label')) ?></label>
+              <input id="email" name="email" type="email" placeholder="you@example.com" required>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button id="submitBtn" type="submit"><?php echo htmlspecialchars($t('subscribe_btn')) ?></button>
+            <button type="button" onclick="document.getElementById('subForm').reset();">Reset</button>
           </div>
         </div>
 
-        <div style="display:flex;gap:12px;align-items:flex-end">
-          <div style="flex:1">
-            <label for="date"><?php echo htmlspecialchars($t('date_label')) ?></label>
-            <input id="date" name="date" type="date" required>
-            <div class="small hint"><?php echo htmlspecialchars($t('date_hint')) ?></div>
-          </div>
-
-          <div style="width:280px;min-width:160px">
-            <label for="email"><?php echo htmlspecialchars($t('email_label')) ?></label>
-            <input id="email" name="email" type="email" placeholder="you@example.com" required>
-          </div>
-        </div>
-
-        <div class="actions">
-          <button id="submitBtn" type="submit"><?php echo htmlspecialchars($t('subscribe_btn')) ?></button>
-          <button type="button" onclick="document.getElementById('subForm').reset();">Reset</button>
-        </div>
       </form>
 
       <div class="foot">
@@ -127,6 +138,9 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
     </div>
   </div>
 
+  <!-- Vue and Element UI (progressive enhancement) -->
+  <script src="https://unpkg.com/vue@2.6.14/dist/vue.min.js"></script>
+  <script src="https://unpkg.com/element-ui@2.15.13/lib/index.js"></script>
   <script>
     // localized strings available to JS
     window.I18N = {
@@ -138,105 +152,97 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
       submitting: <?php echo json_encode($t('submitting')) ?>
     };
 
-    // Dynamically load airports data and initialize the searchable dropdowns
-    let AIRPORTS = [];
-
-    function buildSearchable(id){
-      const container = document.getElementById(id);
-      const name = container.dataset.name || id;
-      // visible input, hidden input for form submit, dropdown
-      const vis = document.createElement('input');
-      vis.type = 'text'; vis.placeholder = window.I18N.search_placeholder; vis.className='sinput';
-      const hidden = document.createElement('input');
-      hidden.type = 'hidden'; hidden.name = name; hidden.required = true;
-      const list = document.createElement('div'); list.className = 'slist';
-      container.appendChild(vis); container.appendChild(hidden); container.appendChild(list);
-
-      // group airports by group
-      const groups = {};
-      AIRPORTS.forEach(a=>{ if(!groups[a.group]) groups[a.group]=[]; groups[a.group].push(a); });
-
-      function renderAll(){
-        list.innerHTML='';
-        // Sort group names locale-aware but put 'Others' at the end
-        const keys = Object.keys(groups).sort((a,b)=>{
-          if (a === 'Others') return 1;
-          if (b === 'Others') return -1;
-          return a.localeCompare(b, 'zh-CN');
+    // Element-enhanced Vue app: mounts into #app-root and hides native fallback
+    (function(){
+      // small helper to build grouped options from airports data
+      function buildGroupsFrom(data){
+        const items = data.map(a=>{
+          const prov = (a.province && a.province.trim()) ? a.province.trim() : '';
+          const group = prov || (a.city && a.city.trim()) || a.country || 'Others';
+          return { code: a.iata, name: a.name || a.city || a.iata, group };
         });
-        for(const g of keys){
-          const gdiv = document.createElement('div'); gdiv.className='gtitle'; gdiv.textContent = g; list.appendChild(gdiv);
-          groups[g].forEach(a=>{
-            const it = document.createElement('div'); it.className='item'; it.dataset.code=a.code; it.dataset.name=a.name; it.textContent = a.code + ' — ' + a.name;
-            it.addEventListener('click', ()=>{ vis.value = it.textContent; hidden.value = a.code; list.style.display='none'; });
-            list.appendChild(it);
-          });
-        }
+        const map = {};
+        items.forEach(a=>{ if(!map[a.group]) map[a.group]=[]; map[a.group].push(a); });
+        const keys = Object.keys(map).sort((a,b)=>{ if(a==='Others') return 1; if(b==='Others') return -1; return a.localeCompare(b,'zh-CN'); });
+        return keys.map(k=>({ name: k, items: map[k] }));
       }
 
-      renderAll();
+      // load airport data (same priority as before)
+      function loadAirportData(){
+        return fetch('airports_cn_prov.json')
+          .then(r=>{ if(r.ok) return r.json(); return fetch('airports_cn.json').then(r2=>{ if(!r2.ok) throw new Error('both fetch failed'); return r2.json(); }); })
+          .catch(()=>{ return [ {code:'PEK',name:'Beijing Capital',province:'Beijing'}, {code:'PVG',name:'Shanghai Pudong',province:'Shanghai'}, {code:'CAN',name:'Guangzhou',province:'Guangdong'} ]; });
+      }
 
-      vis.addEventListener('input', ()=>{
-        const q = vis.value.trim().toLowerCase();
-        if(q===''){ renderAll(); list.style.display='block'; hidden.value=''; return; }
-        list.innerHTML='';
-        const matched = AIRPORTS.filter(a=> (a.code+a.name).toLowerCase().indexOf(q) !== -1 );
-        if(matched.length===0){ const none=document.createElement('div'); none.className='none'; none.textContent=window.I18N.no_matches; list.appendChild(none); }
-        matched.forEach(a=>{
-          const it = document.createElement('div'); it.className='item'; it.dataset.code=a.code; it.dataset.name=a.name; it.textContent = a.code + ' — ' + a.name;
-          it.addEventListener('click', ()=>{ vis.value = it.textContent; hidden.value = a.code; list.style.display='none'; });
-          list.appendChild(it);
+      // mount Vue app
+      loadAirportData().then(data=>{
+        const groups = buildGroupsFrom(data);
+        // create app
+        new Vue({
+          el: '#app-root',
+          data: function(){ return { form: { from:'', to:'', date:'', email:'' }, groups: groups, submitting:false }; },
+          template: `
+            <div>
+              <el-form :model="form" label-position="top">
+                <div class="row" style="margin-bottom:12px">
+                  <div style="flex:1">
+                    <label><?php echo htmlspecialchars($t('from_label')) ?></label>
+                    <el-select v-model="form.from" filterable placeholder="<?php echo htmlspecialchars($t('search_placeholder')) ?>" clearable>
+                      <el-option-group v-for="g in groups" :label="g.name" :key="g.name">
+                        <el-option v-for="opt in g.items" :key="opt.code" :label="opt.code + ' — ' + opt.name" :value="opt.code"></el-option>
+                      </el-option-group>
+                    </el-select>
+                    <div class="small hint"><?php echo htmlspecialchars($t('from_hint')) ?></div>
+                  </div>
+                  <div style="flex:1">
+                    <label><?php echo htmlspecialchars($t('to_label')) ?></label>
+                    <el-select v-model="form.to" filterable placeholder="<?php echo htmlspecialchars($t('search_placeholder')) ?>" clearable>
+                      <el-option-group v-for="g in groups" :label="g.name" :key="g.name+'-to'">
+                        <el-option v-for="opt in g.items" :key="opt.code+'-to'" :label="opt.code + ' — ' + opt.name" :value="opt.code"></el-option>
+                      </el-option-group>
+                    </el-select>
+                  </div>
+                </div>
+                <div style="display:flex;gap:12px;align-items:flex-end">
+                  <div style="flex:1">
+                    <label><?php echo htmlspecialchars($t('date_label')) ?></label>
+                    <el-date-picker v-model="form.date" type="date" placeholder="<?php echo htmlspecialchars($t('date_hint')) ?>" value-format="yyyy-MM-dd"></el-date-picker>
+                  </div>
+                  <div style="width:280px;min-width:160px">
+                    <label><?php echo htmlspecialchars($t('email_label')) ?></label>
+                    <el-input v-model="form.email" type="email" placeholder="you@example.com"></el-input>
+                  </div>
+                </div>
+                <div class="actions" style="margin-top:14px">
+                  <el-button type="primary" :loading="submitting" @click.native.prevent="onSubmit"><?php echo htmlspecialchars($t('subscribe_btn')) ?></el-button>
+                  <el-button @click.native.prevent="onReset" type="warning"><?php echo htmlspecialchars($t('reset_btn')) ?></el-button>
+                </div>
+                <!-- hidden native inputs to be submitted to server -->
+                <input type="hidden" name="from" :value="form.from">
+                <input type="hidden" name="to" :value="form.to">
+                <input type="hidden" name="date" :value="form.date">
+                <input type="hidden" name="email" :value="form.email">
+              </el-form>
+            </div>
+          `,
+          methods: {
+            onReset(){ this.form.from=''; this.form.to=''; this.form.date=''; this.form.email=''; },
+            onSubmit(){
+              if(!this.form.from || !this.form.to || !this.form.email){ this.$alert(window.I18N.alert_missing); return; }
+              if(!this.form.date){ this.$alert(window.I18N.alert_invalid_date); return; }
+              const d = new Date(this.form.date); const today = new Date(); today.setHours(0,0,0,0);
+              if(d < today){ this.$confirm(window.I18N.confirm_past, '', { type: 'warning'}).then(()=>{ this.submitNative(); }).catch(()=>{}); return; }
+              this.submitNative();
+            },
+            submitNative(){ this.submitting=true; setTimeout(()=>{ document.getElementById('subForm').submit(); }, 150); }
+          },
+          mounted(){
+            // hide native fallback after mount
+            const nf = document.getElementById('native-fallback'); if(nf) nf.style.display='none';
+          }
         });
-        list.style.display='block';
-      });
-
-      vis.addEventListener('focus', ()=>{ list.style.display='block'; });
-      document.addEventListener('click', (e)=>{ if(!container.contains(e.target)) list.style.display='none'; });
-    }
-
-    // After loading airports_cn_prov.json, initialize the search components
-    (function loadAirports(){
-      fetch('airports_cn_prov.json')
-        .then(r=>{
-          if(r.ok) return r.json();
-          return fetch('airports_cn.json').then(r2=>{ if(!r2.ok) throw new Error('both fetch failed'); return r2.json(); });
-        })
-        .then(data=>{
-          AIRPORTS = data.map(a=>{
-            const prov = (a.province && a.province.trim()) ? a.province.trim() : '';
-            const group = prov || (a.city && a.city.trim()) || a.country || 'Others';
-            return { code: a.iata, name: a.name || a.city || a.iata, group };
-          });
-          AIRPORTS.forEach(a=>{ if(!a.group) a.group = 'Others'; });
-          buildSearchable('from_search');
-          buildSearchable('to_search');
-        })
-        .catch(err=>{
-          console.error('Failed to load airports data, using built-in minimal list:', err);
-          AIRPORTS = [ {code:'PEK',name:'Beijing Capital',group:'Beijing'}, {code:'PVG',name:'Shanghai Pudong',group:'Shanghai'}, {code:'CAN',name:'Guangzhou',group:'Guangdong'} ];
-          buildSearchable('from_search');
-          buildSearchable('to_search');
-        });
+      }).catch(err=>{ console.error('Vue mount failed', err); });
     })();
-
-    // prepareSubmit: validate hidden inputs and date
-    function prepareSubmit(){
-      var date = document.getElementById('date');
-      var email = document.getElementById('email');
-      var fromHidden = document.querySelector('input[name=from]');
-      var toHidden = document.querySelector('input[name=to]');
-      if (!fromHidden.value || !toHidden.value || !email.checkValidity()){
-        alert(window.I18N.alert_missing);
-        return false;
-      }
-      var d = new Date(date.value);
-      var today = new Date(); today.setHours(0,0,0,0);
-      if (isNaN(d.getTime())){ alert(window.I18N.alert_invalid_date); return false; }
-      if (d < today){ if(!confirm(window.I18N.confirm_past)) return false; }
-      document.getElementById('submitBtn').disabled = true;
-      document.getElementById('submitBtn').textContent = window.I18N.submitting;
-      return true;
-    }
   </script>
   <style>
     .searchable{position:relative}
