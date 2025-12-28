@@ -1,5 +1,5 @@
 {
-  "name": "flight-ticket-monitor",
+  "name": "yanqiansong/flight-ticket-monitor",
   "description": "Simple PHP flight price monitor using PHPMailer",
   "require": {
     "phpmailer/phpmailer": "^6.8"
