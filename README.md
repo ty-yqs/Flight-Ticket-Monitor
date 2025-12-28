@@ -4,24 +4,24 @@
 
 A minimal PHP service that monitors flight prices on `flights.ctrip.com` and emails subscribers with sorted price results.
 
-Short summary
+## Short summary
 - Users subscribe to a one-way route (IATA codes) and date via a simple web UI (`index.php`).
 - An hourly worker fetches rendered search pages (optionally via Puppeteer), extracts prices, sorts them, and emails results using PHPMailer.
 - Emails include a secure unsubscribe link protected by an HMAC token.
 
-Features
+## Features
 - Web UI to create subscriptions: route (from → to), date, and recipient email (`index.php`).
 - Subscriptions stored in a local SQLite database (`subscriptions.db`).
 - Worker (`worker.php`) that renders pages using optional Node/Puppeteer (`fetcher.js`) and extracts prices with fallback parsing.
 - Email delivery via PHPMailer + SMTP (configurable via environment variables).
 - Unsubscribe endpoint (`unsubscribe.php`) with HMAC-signed token to prevent abuse.
 
-Quick prerequisites
+## Quick prerequisites
 - PHP 7.4+ with `pdo_sqlite` extension
 - Composer (for PHPMailer)
 - Node.js (optional, for `fetcher.js` + Puppeteer rendering)
 
-Quick start
+## Quick start
 1. Clone the repo and change into the project directory.
 2. Install PHP dependencies:
 
@@ -50,7 +50,7 @@ php db_init.php
 php worker.php
 ```
 
-Configuration (.env)
+## Configuration (.env)
 Create a `.env` file in the project root (see `.env.example`) and fill SMTP credentials and other options. Example values:
 
 ```
@@ -74,11 +74,11 @@ DB_FILE=subscriptions.db
 UNSUBSCRIBE_SECRET=replace_this_with_a_strong_random_value
 ```
 
-Security notes
+## Security notes
 - Do NOT commit `.env` or `.unsubscribe_secret` to git. The project includes a `.gitignore` entry for `.unsubscribe_secret` and you should add `.env` as well.
 - You can either set `UNSUBSCRIBE_SECRET` in `.env` or let the app persist an auto-generated secret into `.unsubscribe_secret` (created on first run).
 
-Testing locally (fast checklist)
+## Testing locally (fast checklist)
 - Install Composer and PHP deps (`composer install`).
 - Initialize DB (`php db_init.php`).
 - Insert a sample subscription for testing:
@@ -102,13 +102,13 @@ php scripts/list_subs.php  # confirm deletion
 
 - To exercise `worker.php` without delivering emails, either configure a local SMTP server or inspect the generated email body. (You can modify `worker.php` to write `$body` to a file for dry-run testing.)
 
-Important scripts
+## Important scripts
 - `scripts/insert_test.php` — insert a sample subscription
 - `scripts/gen_token.php` — print unsubscribe token and URL for a subscription
 - `scripts/run_unsubscribe.php` — call `unsubscribe.php` from CLI for testing
 - `scripts/list_subs.php` — list subscriptions from the DB
 
-Files overview
+## Files overview
 - `index.php` — subscription UI
 - `subscribe.php` — save subscriptions
 - `db_init.php` — create SQLite DB
@@ -118,21 +118,21 @@ Files overview
 - `fetcher.js` — optional Puppeteer renderer
 - `subscriptions.db` — SQLite DB file (created by `db_init.php`)
 
-Running hourly
+## Running hourly
 Add to crontab (example):
 
 ```cron
 0 * * * * /usr/bin/php /full/path/to/worker.php >> /full/path/to/worker.log 2>&1
 ```
 
-Troubleshooting
+## Troubleshooting
 - PHPMailer missing: run `composer install` in project root to install dependencies.
 - Node/Puppeteer issues: ensure Chromium and required libs are installed per Puppeteer documentation.
 - If prices fail to parse: capture raw HTML (from `fetcher.js`) and adjust `parse_prices()` in `worker.php`.
 
-Contributing
+## Contributing
 - Improve parsing rules or add time-limited unsubscribe tokens if desired.
 - Please avoid committing secrets; use `.env` for environment-specific values.
 
-License
-- MIT (or choose your preferred license).
+## License
+- MIT.
