@@ -25,13 +25,24 @@ jobs:
       - name: Show PHP info
         run: php -v
 
-      - name: Install composer deps (if present)
+      - name: Validate composer.json
+        id: composer_validate
         run: |
           if [ -f composer.json ]; then
-            composer install --no-interaction --no-suggest --prefer-dist
+            if composer validate --no-check-publish; then
+              echo "valid=true" >> $GITHUB_OUTPUT
+            else
+              echo "valid=false" >> $GITHUB_OUTPUT
+              echo "composer.json validation failed, will skip composer install"
+            fi
           else
-            echo "no composer.json, skipping composer install"
+            echo "valid=false" >> $GITHUB_OUTPUT
+            echo "no composer.json found"
           fi
+
+      - name: Install composer deps (if present and valid)
+        if: steps.composer_validate.outputs.valid == 'true'
+        run: composer install --no-interaction --no-suggest --prefer-dist
 
       - name: PHP Syntax Check
         run: |
