@@ -7,8 +7,8 @@ if (!url) {
 }
 (async () => {
   try {
-    const puppeteer = require('puppeteer');
-    const browser = await puppeteer.launch({args: ['--no-sandbox','--disable-setuid-sandbox']});
+    const puppeteer = require('puppeteer-core');
+    const browser = await puppeteer.launch({executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/chromium', args: ['--no-sandbox','--disable-setuid-sandbox']});
     const page = await browser.newPage();
     await page.setUserAgent('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/115.0 Safari/537.36');
     await page.goto(url, {waitUntil: 'networkidle2', timeout: 30000});

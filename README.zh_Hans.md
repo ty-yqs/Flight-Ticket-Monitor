@@ -80,7 +80,7 @@ UNSUBSCRIBE_SECRET=replace_this_with_a_strong_random_value
 - 请勿将 `.env` 或 `.unsubscribe_secret` 提交到 git（项目已在 `.gitignore` 中忽略 `.unsubscribe_secret`，建议也忽略 `.env`）。
 - 你可以在 `.env` 中设置 `UNSUBSCRIBE_SECRET`，也可以让程序第一次运行时自动生成并保存到 `.unsubscribe_secret` 文件中。
 
-本地测试（快速清单）
+## 本地测试（快速清单）
 - 安装 Composer 并安装依赖：`composer install`。
 - 初始化数据库：`php db_init.php`。
 - 插入测试订阅（辅助脚本）：

@@ -1,0 +1,12 @@
+{
+  "name": "flight-ticket-monitor-frontend",
+  "version": "0.1.0",
+  "description": "Frontend helpers for Flight Ticket Monitor (node fetcher)",
+  "private": true,
+  "scripts": {
+    "start": "node fetcher.js"
+  },
+  "dependencies": {
+    "puppeteer-core": "^19.11.1"
+  }
+}
