@@ -74,8 +74,8 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
     .foot{margin-top:14px;font-size:13px;color:var(--muted)}
     .hint{color:#888;font-size:13px}
   </style>
-  <!-- Element UI CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/element-ui@2.15.13/lib/theme-chalk/index.css">
+  <!-- Element UI CSS (local) -->
+  <link rel="stylesheet" href="/static/element-ui.css">
 </head>
 <body>
   <div class="wrap">
@@ -139,8 +139,8 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
   </div>
 
   <!-- Vue and Element UI (progressive enhancement) -->
-  <script src="https://unpkg.com/vue@2.6.14/dist/vue.min.js"></script>
-  <script src="https://unpkg.com/element-ui@2.15.13/lib/index.js"></script>
+  <script src="/static/vue.min.js"></script>
+  <script src="/static/element-ui.js"></script>
   <script>
     // localized strings available to JS
     window.I18N = {
