@@ -1,0 +1,44 @@
+name: PHP Syntax Check
+
+on:
+  push:
+    branches: ["main", "master"]
+  pull_request:
+
+jobs:
+  phplint:
+    name: PHP Lint (matrix)
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php-version: ["7.4", "8.0", "8.1", "8.2"]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v4
+        with:
+          php-version: ${{ matrix.php-version }}
+
+      - name: Show PHP info
+        run: php -v
+
+      - name: Install composer deps (if present)
+        run: |
+          if [ -f composer.json ]; then
+            composer install --no-interaction --no-suggest --prefer-dist
+          else
+            echo "no composer.json, skipping composer install"
+          fi
+
+      - name: PHP Syntax Check
+        run: |
+          set -e
+          files=$(git ls-files '*.php')
+          if [ -z "$files" ]; then
+            echo "No PHP files found."
+            exit 0
+          fi
+          echo "$files" | xargs -n1 -P4 -I{} php -l {}
