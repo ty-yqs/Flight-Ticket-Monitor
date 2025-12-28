@@ -2,6 +2,8 @@
 
 [English README](README.md) | [中文文档](README.zh_Hans.md)
 
+![demo.png](demo.png)
+
 A minimal PHP service that monitors flight prices on `flights.ctrip.com` and emails subscribers with sorted price results.
 
 ## Short summary

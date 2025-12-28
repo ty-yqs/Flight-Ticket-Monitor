@@ -55,6 +55,7 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title><?php echo htmlspecialchars($t('title')) ?> — Subscribe</title>
+  <link rel="icon" href="/favicon.ico" />
   <style>
     :root{--bg:#f5f7fb;--card:#ffffff;--accent:#0b78d1;--muted:#666}
     *{box-sizing:border-box}
