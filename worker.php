@@ -129,7 +129,7 @@ function send_email($to, $subject, $htmlBody) {
         */
 
         try {
-                $mail = new PHPMailer\\PHPMailer\\PHPMailer(true);
+                $mail = new PHPMailer\PHPMailer\PHPMailer(true);
         $mail->isSMTP();
         $mail->Host = $SMTP_HOST;
         $mail->SMTPAuth = true;
@@ -149,6 +149,10 @@ function send_email($to, $subject, $htmlBody) {
         return false;
     }
 }
+
+// --- Unsubscribe token helpers ---
+// Use centralized helpers
+require_once __DIR__ . '/lib/unsubscribe.php';
 
 foreach ($subs as $s) {
     $from = $s['from_airport'];
@@ -174,13 +178,22 @@ foreach ($subs as $s) {
         continue;
     }
 
-    $body = "<h3>{$from} → {$to} {$date} Flight Prices (ascending)</h3>";
-    $body .= "<ol>";
+    $token = make_unsubscribe_token($s['id'], $email, $s['created_at'] ?? '');
+    $unsubscribeUrl = 'unsubscribe.php?id=' . intval($s['id']) . '&email=' . rawurlencode($email) . '&t=' . rawurlencode($token);
+
+    $body = "<!doctype html><html><head><meta charset=\"utf-8\"><title>Flight Prices</title>";
+    $body .= "<style>body{font-family:Arial,Helvetica,sans-serif;background:#f5f7fb;color:#222;margin:0;padding:24px} .card{max-width:680px;margin:20px auto;background:#fff;padding:20px;border-radius:8px;box-shadow:0 6px 24px rgba(15,23,42,.08)} h3{margin:0 0 12px 0;font-size:18px;color:#111} table{width:100%;border-collapse:collapse;margin-top:12px} td,th{padding:10px;border-bottom:1px solid #eef2f7;text-align:left} .price{font-weight:600;color:#0b6efd} .footer{font-size:13px;color:#666;margin-top:14px} .btn{display:inline-block;background:#e53935;color:#fff;padding:8px 12px;border-radius:6px;text-decoration:none}</style>";
+    $body .= "</head><body><div class=\"card\">";
+    $body .= "<h3>" . htmlspecialchars("{$from} → {$to} {$date}") . "</h3>";
+    $body .= "<table><thead><tr><th>Rank</th><th>Price</th></tr></thead><tbody>";
+    $rank = 1;
     foreach ($prices as $p) {
-        $body .= '<li>¥' . number_format($p, 2) . '</li>';
+        $body .= '<tr><td>' . $rank++ . '</td><td class="price">¥' . number_format($p, 2) . '</td></tr>';
     }
-    $body .= "</ol>";
-    $body .= "<p>Data source: <a href='{$url}'>{$url}</a></p>";
+    $body .= "</tbody></table>";
+    $body .= "<p class=\"footer\">Data source: <a href='" . htmlspecialchars($url) . "'>" . htmlspecialchars($url) . "</a></p>";
+    $body .= "<p class=\"footer\">If you no longer want these emails, you can <a class=\"btn\" href='" . htmlspecialchars($unsubscribeUrl) . "'>Unsubscribe</a></p>";
+    $body .= "</div></body></html>";
 
     $subject = "Flight Monitor: {$from} → {$to} {$date} - Lowest ¥" . number_format($prices[0],2);
     $ok = send_email($email, $subject, $body);

@@ -1,91 +1,136 @@
 # Flight Ticket Monitor
 
-A minimal PHP service to monitor flight prices on flights.ctrip.com.
-Users subscribe to a one-way route (IATA codes) and date; an hourly worker fetches rendered pages, extracts prices, sorts them, and emails results.
+A minimal PHP service that monitors flight prices on flights.ctrip.com and emails subscribers with sorted price results.
+
+Short summary
+- Users subscribe to a one-way route (IATA codes) and date via a simple web UI (`index.php`).
+- An hourly worker fetches rendered search pages (optionally via Puppeteer), extracts prices, sorts them, and emails results using PHPMailer.
+- Emails include a secure unsubscribe link protected by an HMAC token.
 
 Features
-- Web UI to subscribe to a route, date and recipient email (`index.php`).
+- Web UI to create subscriptions: route (from → to), date, and recipient email (`index.php`).
 - Subscriptions stored in a local SQLite database (`subscriptions.db`).
-- Hourly worker (`worker.php`) that builds search URLs and fetches rendered HTML via an optional Node/Puppeteer `fetcher.js`.
-- Price extraction with fallbacks and ascending sorting.
-- Email delivery via PHPMailer + SMTP (required).
-- Includes `airports_cn_prov.json` (China airports grouped by province) to improve the UI.
+- Worker (`worker.php`) that renders pages using optional Node/Puppeteer (`fetcher.js`) and extracts prices with fallback parsing.
+- Email delivery via PHPMailer + SMTP (configurable via environment variables).
+- Unsubscribe endpoint (`unsubscribe.php`) with HMAC-signed token to prevent abuse.
 
-Requirements
-- PHP 7.4+ with `pdo_sqlite`.
-- Composer (for PHPMailer): run `composer install`.
-- Node.js (optional) for `fetcher.js` + Puppeteer rendering.
-- If using Puppeteer, ensure Chromium and system libraries are installed.
+Quick prerequisites
+- PHP 7.4+ with `pdo_sqlite` extension
+- Composer (for PHPMailer)
+- Node.js (optional, for `fetcher.js` + Puppeteer rendering)
 
 Quick start
-1. Install PHP dependencies:
+1. Clone the repo and change into the project directory.
+2. Install PHP dependencies:
 
 ```bash
 composer install
 ```
 
-2. (Optional) Install Node dependencies for the fetcher:
+3. (Optional) Install Node dependencies for the fetcher:
 
 ```bash
 npm init -y
 npm install puppeteer
 ```
 
-3. Initialize the database (run once):
+4. Initialize the database (run once):
 
 ```bash
 php db_init.php
 ```
 
-4. Open `index.php` in a browser and create subscriptions.
+5. Open `index.php` in a browser to create subscriptions.
 
-5. Test the worker (it will call `fetcher.js` if configured and send emails via SMTP):
+6. Run the worker (hourly by cron or manually):
 
 ```bash
 php worker.php
 ```
 
-Configuration
-- Copy `.env.example` to `.env` and fill SMTP and optional settings.
-- Important environment variables:
-  - `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_SECURE`, `SMTP_FROM`, `SMTP_FROM_NAME`
-  - `NODE_PATH`, `FETCHER_SCRIPT`, `DB_FILE`
-
-Example `.env` snippet:
+Configuration (.env)
+Create a `.env` file in the project root (see `.env.example`) and fill SMTP credentials and other options. Example values:
 
 ```
+# SMTP server
 SMTP_HOST=smtp.example.com
 SMTP_PORT=587
-SMTP_USER=your_smtp_user
+SMTP_USER=your_smtp_user@example.com
 SMTP_PASS=your_smtp_password
 SMTP_SECURE=tls
 SMTP_FROM=monitor@example.com
 SMTP_FROM_NAME="Flight Monitor"
+
+# Optional: node/fetcher
+NODE_PATH=/usr/local/bin/node
+FETCHER_SCRIPT=fetcher.js
+
+# SQLite DB file
+DB_FILE=subscriptions.db
+
+# Unsubscribe HMAC secret (use a strong random string)
+UNSUBSCRIBE_SECRET=replace_this_with_a_strong_random_value
 ```
 
-Running hourly
+Security notes
+- Do NOT commit `.env` or `.unsubscribe_secret` to git. The project includes a `.gitignore` entry for `.unsubscribe_secret` and you should add `.env` as well.
+- You can either set `UNSUBSCRIBE_SECRET` in `.env` or let the app persist an auto-generated secret into `.unsubscribe_secret` (created on first run).
 
+Testing locally (fast checklist)
+- Install Composer and PHP deps (`composer install`).
+- Initialize DB (`php db_init.php`).
+- Insert a sample subscription for testing:
+
+```bash
+php scripts/insert_test.php
+```
+
+- Generate an unsubscribe URL/token for a subscription:
+
+```bash
+php scripts/gen_token.php 1
+```
+
+- Test the unsubscribe handler locally via the CLI wrapper:
+
+```bash
+php scripts/run_unsubscribe.php 1 test@example.com <token>
+php scripts/list_subs.php  # confirm deletion
+```
+
+- To exercise `worker.php` without delivering emails, either configure a local SMTP server or inspect the generated email body. (You can modify `worker.php` to write `$body` to a file for dry-run testing.)
+
+Important scripts
+- `scripts/insert_test.php` — insert a sample subscription
+- `scripts/gen_token.php` — print unsubscribe token and URL for a subscription
+- `scripts/run_unsubscribe.php` — call `unsubscribe.php` from CLI for testing
+- `scripts/list_subs.php` — list subscriptions from the DB
+
+Files overview
+- `index.php` — subscription UI
+- `subscribe.php` — save subscriptions
+- `db_init.php` — create SQLite DB
+- `worker.php` — hourly worker and email sender
+- `unsubscribe.php` — secure unsubscribe endpoint
+- `lib/unsubscribe.php` — token generation & verification helpers
+- `fetcher.js` — optional Puppeteer renderer
+- `subscriptions.db` — SQLite DB file (created by `db_init.php`)
+
+Running hourly
 Add to crontab (example):
 
 ```cron
 0 * * * * /usr/bin/php /full/path/to/worker.php >> /full/path/to/worker.log 2>&1
 ```
 
-Notes & troubleshooting
-- PHPMailer is required. `worker.php` will log an error and return false if `vendor/autoload.php` is missing — run `composer install`.
-- The Ctrip site is JS-heavy and may use anti-bot measures; use `fetcher.js` (Puppeteer) to render pages.
-- If prices are not parsed, inspect raw HTML from `fetcher.js` and adjust `parse_prices()` in `worker.php`.
-- Puppeteer may require extra system libraries on Linux (libnss, libatk, etc.). See Puppeteer docs.
+Troubleshooting
+- PHPMailer missing: run `composer install` in project root to install dependencies.
+- Node/Puppeteer issues: ensure Chromium and required libs are installed per Puppeteer documentation.
+- If prices fail to parse: capture raw HTML (from `fetcher.js`) and adjust `parse_prices()` in `worker.php`.
 
-Files
-- `index.php` — subscription UI
-- `subscribe.php` — save subscriptions to SQLite
-- `db_init.php` — create SQLite DB (run once)
-- `worker.php` — hourly worker and email sender
-- `fetcher.js` — optional Node Puppeteer fetcher
-- `airports_cn_prov.json` — China airports grouped by province
-- `composer.json` — PHP dependency manifest (PHPMailer)
+Contributing
+- Improve parsing rules or add time-limited unsubscribe tokens if desired.
+- Please avoid committing secrets; use `.env` for environment-specific values.
 
-Next steps I can do for you
-- Add a ready `.env` template with masked values, or
-- Add a systemd unit / improved cron wrapper and logging.
+License
+- MIT (or choose your preferred license).
