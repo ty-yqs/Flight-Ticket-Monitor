@@ -1,6 +1,8 @@
 # Flight Ticket 机票监控
 
-一个用于监控 flights.ctrip.com 票价并通过邮件通知订阅者的精简 PHP 服务。
+[English README](README.md) | [中文文档](README.zh_Hans.md)
+
+这是一个用于监控携程 `flights.ctrip.com` 票价并通过邮件通知订阅者的精简 PHP 服务。
 
 简介
 - 用户可以通过简单的网页界面（`index.php`）订阅单程航线（IATA 代码）和日期。
