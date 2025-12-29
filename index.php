@@ -113,9 +113,9 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
           </div>
 
           <div style="display:flex;gap:12px;align-items:flex-end">
-            <div style="flex:1">
+              <div style="flex:1">
               <label for="date"><?php echo htmlspecialchars($t('date_label')) ?></label>
-              <input id="date" name="date" type="date" required>
+              <input id="date" name="date" type="date" required min="<?php echo date('Y-m-d'); ?>">
               <div class="small hint"><?php echo htmlspecialchars($t('date_hint')) ?></div>
             </div>
 
@@ -190,7 +190,7 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
         // create app with cascading selects: province -> airports
         new Vue({
           el: '#app-root',
-          data: function(){ return { form: { fromProv:'', toProv:'', from:'', to:'', date:'', email:'' }, provinces: pm.provinces, airportMap: pm.map, submitting:false }; },
+          data: function(){ return { form: { fromProv:'', toProv:'', from:'', to:'', date:'', email:'' }, provinces: pm.provinces, airportMap: pm.map, submitting:false, datePickerOptions: { disabledDate(time){ const today = new Date(); today.setHours(0,0,0,0); return time.getTime() < today.getTime(); } } }; },
           template: `
             <div>
               <el-form :model="form" label-position="top">
@@ -218,7 +218,7 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
                 <div style="display:flex;gap:12px;align-items:flex-end">
                   <div style="flex:1">
                     <label><?php echo htmlspecialchars($t('date_label')) ?></label>
-                    <el-date-picker v-model="form.date" type="date" placeholder="<?php echo htmlspecialchars($t('date_hint')) ?>" value-format="yyyy-MM-dd"></el-date-picker>
+                    <el-date-picker v-model="form.date" type="date" placeholder="<?php echo htmlspecialchars($t('date_hint')) ?>" value-format="yyyy-MM-dd" :picker-options="datePickerOptions"></el-date-picker>
                   </div>
                   <div style="width:280px;min-width:160px">
                     <label><?php echo htmlspecialchars($t('email_label')) ?></label>
