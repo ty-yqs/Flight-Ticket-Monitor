@@ -98,6 +98,56 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
           <!-- Vue/Element will mount here and render enhanced form; fallback native inputs below will be kept hidden when Vue initializes -->
         </div>
 
+        <!-- Vue template moved out to avoid JS template literal parsing issues -->
+        <script type="text/x-template" id="app-template">
+          <div>
+            <el-form :model="form" label-position="top">
+              <div class="row" style="margin-bottom:12px">
+                <div style="flex:1">
+                  <label><?php echo htmlspecialchars($t('from_label')) ?></label>
+                  <el-select v-model="form.fromProv" placeholder="<?php echo $lang==='zh' ? '选择省份' : 'Select province' ?>" clearable>
+                    <el-option v-for="p in provinces" :key="p.key" :label="p.label" :value="p.key"></el-option>
+                  </el-select>
+                  <el-select v-model="form.from" filterable :placeholder="form.fromProv ? '<?php echo htmlspecialchars($t('search_placeholder')) ?>' : '<?php echo htmlspecialchars($t('from_hint')) ?>'" clearable :disabled="!form.fromProv" style="margin-top:8px">
+                    <el-option v-for="opt in (airportMap[form.fromProv] || [])" :key="opt.code" :label="opt.code + ' — ' + (opt.displayName || opt.name)" :value="opt.code"></el-option>
+                  </el-select>
+                  <div class="small hint"><?php echo htmlspecialchars($t('from_hint')) ?></div>
+                </div>
+                <div style="flex:1">
+                  <label><?php echo htmlspecialchars($t('to_label')) ?></label>
+                  <el-select v-model="form.toProv" placeholder="<?php echo $lang==='zh' ? '选择省份' : 'Select province' ?>" clearable>
+                    <el-option v-for="p in provinces" :key="p.key+'-to'" :label="p.label" :value="p.key"></el-option>
+                  </el-select>
+                  <el-select v-model="form.to" filterable :placeholder="form.toProv ? '<?php echo htmlspecialchars($t('search_placeholder')) ?>' : '<?php echo htmlspecialchars($t('from_hint')) ?>'" clearable :disabled="!form.toProv" style="margin-top:8px">
+                    <el-option v-for="opt in (airportMap[form.toProv] || [])" :key="opt.code+'-to'" :label="opt.code + ' — ' + (opt.displayName || opt.name)" :value="opt.code"></el-option>
+                  </el-select>
+                </div>
+              </div>
+              <div style="display:flex;gap:12px;align-items:flex-end">
+                <div style="flex:1">
+                  <label><?php echo htmlspecialchars($t('date_label')) ?></label>
+                  <el-date-picker v-model="form.date" type="date" placeholder="<?php echo htmlspecialchars($t('date_hint')) ?>" value-format="yyyy-MM-dd" :picker-options="datePickerOptions"></el-date-picker>
+                </div>
+                <div style="width:280px;min-width:160px">
+                  <label><?php echo htmlspecialchars($t('email_label')) ?></label>
+                  <el-input v-model="form.email" type="email" placeholder="you@example.com"></el-input>
+                </div>
+              </div>
+              <div class="actions" style="margin-top:14px">
+                <el-button type="primary" :loading="submitting" @click.native.prevent="onSubmit"><?php echo htmlspecialchars($t('subscribe_btn')) ?></el-button>
+                <el-button @click.native.prevent="onReset" type="warning"><?php echo htmlspecialchars($t('reset_btn')) ?></el-button>
+              </div>
+              <!-- hidden native inputs to be submitted to server -->
+              <input type="hidden" name="fromProv" :value="form.fromProv">
+              <input type="hidden" name="toProv" :value="form.toProv">
+              <input type="hidden" name="from" :value="form.from">
+              <input type="hidden" name="to" :value="form.to">
+              <input type="hidden" name="date" :value="form.date">
+              <input type="hidden" name="email" :value="form.email">
+            </el-form>
+          </div>
+        </script>
+
         <!-- Fallback native inputs (kept for non-JS or server-side fallback) -->
         <div id="native-fallback">
           <div class="row" style="margin-bottom:12px">
@@ -152,6 +202,7 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
       confirm_past: <?php echo json_encode($t('confirm_past')) ?>,
       submitting: <?php echo json_encode($t('submitting')) ?>
     };
+
     // app language
     window.APP_LANG = <?php echo json_encode($lang) ?>;
 
@@ -160,102 +211,94 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
       "Guangdong":"广东","Tibet":"西藏","Guizhou":"贵州","Guangxi":"广西","Inner Mongolia":"内蒙古","Xinjiang":"新疆","Shaanxi":"陕西","Henan":"河南","Hunan":"湖南","Hubei":"湖北","Hebei":"河北","Liaoning":"辽宁","Jiangsu":"江苏","Zhejiang":"浙江","Shanghai":"上海","Beijing":"北京","Tianjin":"天津","Chongqing":"重庆","Sichuan":"四川","Yunnan":"云南","Fujian":"福建","Shandong":"山东","Jilin":"吉林","Heilongjiang":"黑龙江","Anhui":"安徽","Shanxi":"山西","Gansu":"甘肃","Qinghai":"青海","Ningxia":"宁夏","Hainan":"海南","Taiwan":"台湾","Hong Kong":"香港","Macau":"澳门","Others":"其他"
     };
 
-    // Element-enhanced Vue app: mounts into #app-root and hides native fallback
     (function(){
-      // build province list and map of airports per province for cascading selects
+      // build a province->airports map and a provinces list for selects
       function buildProvinceMap(data){
-        const items = data.map(a=>{
-          const prov = (a.province && a.province.trim()) ? a.province.trim() : '';
-          const province = prov || (a.city && a.city.trim()) || a.country || 'Others';
-          return { code: a.iata, name: a.name || a.city || a.iata, province };
+        var items = data.map(function(a){
+          var prov = (a.province && a.province.trim()) ? a.province.trim() : '';
+          var province = prov || (a.city && a.city.trim()) || a.country || 'Others';
+          return { code: a.iata, name: a.name || a.city || a.iata, province: province };
         });
-        const map = {};
-        items.forEach(a=>{ if(!map[a.province]) map[a.province]=[]; map[a.province].push(a); });
-        const provinces = Object.keys(map).sort((a,b)=>{ if(a==='Others') return 1; if(b==='Others') return -1; return a.localeCompare(b,'zh-CN'); });
-        // build display objects: { key: 'Guangdong', label: '广东' }
-        const display = provinces.map(p=>({ key: p, label: (window.APP_LANG==='zh' ? (window.PROVINCE_CN[p] || p) : p) }));
+
+        var map = {};
+        items.forEach(function(it){
+          if(!map[it.province]) map[it.province] = [];
+          map[it.province].push(it);
+        });
+
+        var provinces = Object.keys(map).sort(function(a,b){
+          if(a==='Others') return 1;
+          if(b==='Others') return -1;
+          return a.localeCompare(b,'zh-CN');
+        });
+
+        var display = provinces.map(function(p){
+          return { key: p, label: (window.APP_LANG==='zh' ? (window.PROVINCE_CN[p] || p) : p) };
+        });
+
         return { provinces: display, map: map };
       }
 
-      // load airport data (same priority as before)
       function loadAirportData(){
         return fetch('airports_cn_prov.json')
-          .then(r=>{ if(r.ok) return r.json(); return fetch('airports_cn.json').then(r2=>{ if(!r2.ok) throw new Error('both fetch failed'); return r2.json(); }); })
-          .catch(()=>{ return [ {code:'PEK',name:'Beijing Capital',province:'Beijing'}, {code:'PVG',name:'Shanghai Pudong',province:'Shanghai'}, {code:'CAN',name:'Guangzhou',province:'Guangdong'} ]; });
+          .then(function(r){ if(r.ok) return r.json(); return fetch('airports_cn.json').then(function(r2){ if(!r2.ok) throw new Error('both fetch failed'); return r2.json(); }); })
+          .catch(function(){ return [ {code:'PEK',name:'Beijing Capital',province:'Beijing'}, {code:'PVG',name:'Shanghai Pudong',province:'Shanghai'}, {code:'CAN',name:'Guangzhou',province:'Guangdong'} ]; });
       }
 
-      // mount Vue app
-      loadAirportData().then(data=>{
-        const pm = buildProvinceMap(data);
-        // create app with cascading selects: province -> airports
-        new Vue({
-          el: '#app-root',
-          data: function(){ return { form: { fromProv:'', toProv:'', from:'', to:'', date:'', email:'' }, provinces: pm.provinces, airportMap: pm.map, submitting:false, datePickerOptions: { disabledDate(time){ const today = new Date(); today.setHours(0,0,0,0); return time.getTime() < today.getTime(); } } }; },
-          template: `
-            <div>
-              <el-form :model="form" label-position="top">
-                <div class="row" style="margin-bottom:12px">
-                  <div style="flex:1">
-                    <label><?php echo htmlspecialchars($t('from_label')) ?></label>
-                    <el-select v-model="form.fromProv" placeholder="<?php echo $lang==='zh' ? '选择省份' : 'Select province' ?>" clearable>
-                      <el-option v-for="p in provinces" :key="p.key" :label="p.label" :value="p.key"></el-option>
-                    </el-select>
-                    <el-select v-model="form.from" filterable :placeholder="form.fromProv ? '<?php echo htmlspecialchars($t('search_placeholder')) ?>' : '<?php echo htmlspecialchars($t('from_hint')) ?>'" clearable :disabled="!form.fromProv" style="margin-top:8px">
-                      <el-option v-for="opt in (airportMap[form.fromProv] || [])" :key="opt.code" :label="opt.code + ' — ' + opt.name" :value="opt.code"></el-option>
-                    </el-select>
-                    <div class="small hint"><?php echo htmlspecialchars($t('from_hint')) ?></div>
-                  </div>
-                  <div style="flex:1">
-                    <label><?php echo htmlspecialchars($t('to_label')) ?></label>
-                    <el-select v-model="form.toProv" placeholder="<?php echo $lang==='zh' ? '选择省份' : 'Select province' ?>" clearable>
-                      <el-option v-for="p in provinces" :key="p.key+'-to'" :label="p.label" :value="p.key"></el-option>
-                    </el-select>
-                    <el-select v-model="form.to" filterable :placeholder="form.toProv ? '<?php echo htmlspecialchars($t('search_placeholder')) ?>' : '<?php echo htmlspecialchars($t('from_hint')) ?>'" clearable :disabled="!form.toProv" style="margin-top:8px">
-                      <el-option v-for="opt in (airportMap[form.toProv] || [])" :key="opt.code+'-to'" :label="opt.code + ' — ' + opt.name" :value="opt.code"></el-option>
-                    </el-select>
-                  </div>
-                </div>
-                <div style="display:flex;gap:12px;align-items:flex-end">
-                  <div style="flex:1">
-                    <label><?php echo htmlspecialchars($t('date_label')) ?></label>
-                    <el-date-picker v-model="form.date" type="date" placeholder="<?php echo htmlspecialchars($t('date_hint')) ?>" value-format="yyyy-MM-dd" :picker-options="datePickerOptions"></el-date-picker>
-                  </div>
-                  <div style="width:280px;min-width:160px">
-                    <label><?php echo htmlspecialchars($t('email_label')) ?></label>
-                    <el-input v-model="form.email" type="email" placeholder="you@example.com"></el-input>
-                  </div>
-                </div>
-                <div class="actions" style="margin-top:14px">
-                  <el-button type="primary" :loading="submitting" @click.native.prevent="onSubmit"><?php echo htmlspecialchars($t('subscribe_btn')) ?></el-button>
-                  <el-button @click.native.prevent="onReset" type="warning"><?php echo htmlspecialchars($t('reset_btn')) ?></el-button>
-                </div>
-                <!-- hidden native inputs to be submitted to server -->
-                <input type="hidden" name="fromProv" :value="form.fromProv">
-                <input type="hidden" name="toProv" :value="form.toProv">
-                <input type="hidden" name="from" :value="form.from">
-                <input type="hidden" name="to" :value="form.to">
-                <input type="hidden" name="date" :value="form.date">
-                <input type="hidden" name="email" :value="form.email">
-              </el-form>
-            </div>
-          `,
-          methods: {
-            onReset(){ this.form.fromProv=''; this.form.toProv=''; this.form.from=''; this.form.to=''; this.form.date=''; this.form.email=''; },
-            onSubmit(){
-              if(!this.form.from || !this.form.to || !this.form.email){ this.$alert(window.I18N.alert_missing); return; }
-              if(!this.form.date){ this.$alert(window.I18N.alert_invalid_date); return; }
-              const d = new Date(this.form.date); const today = new Date(); today.setHours(0,0,0,0);
-              if(d < today){ this.$confirm(window.I18N.confirm_past, '', { type: 'warning'}).then(()=>{ this.submitNative(); }).catch(()=>{}); return; }
-              this.submitNative();
-            },
-            submitNative(){ this.submitting=true; setTimeout(()=>{ document.getElementById('subForm').submit(); }, 150); }
-          },
-          mounted(){
-            // hide native fallback after mount
-            const nf = document.getElementById('native-fallback'); if(nf) nf.style.display='none';
-          }
-        });
-      }).catch(err=>{ console.error('Vue mount failed', err); });
+      loadAirportData().then(function(data){
+        // optional IATA->Chinese map
+        fetch('iata_cn_map.json').then(function(r){ if(r.ok) return r.json(); return {}; }).catch(function(){ return {}; }).then(function(iataMap){
+          var pm = buildProvinceMap(data);
+          Object.keys(pm.map).forEach(function(prov){
+            pm.map[prov] = pm.map[prov].map(function(a){
+              var iataKey = a.iata || a.code || a.IATA || a.Iata;
+              var nameCn = a.name_cn || a.cn_name || (iataMap && (iataMap[iataKey] || iataMap[a.code]));
+              var display = (window.APP_LANG==='zh' && nameCn) ? nameCn : (a.name || a.city || a.code || iataKey);
+              var copy = Object.assign({}, a);
+              copy.displayName = display;
+              return copy;
+            });
+          });
+
+          try{
+            new Vue({
+              el: '#app-root',
+              data: function(){
+                return {
+                  form: { fromProv:'', toProv:'', from:'', to:'', date:'', email:'' },
+                  provinces: pm.provinces,
+                  airportMap: pm.map,
+                  submitting: false,
+                  datePickerOptions: {
+                    disabledDate: function(time){
+                      var today = new Date(); today.setHours(0,0,0,0); return time.getTime() < today.getTime();
+                    }
+                  }
+                };
+              },
+              template: '#app-template',
+              methods: {
+                onReset: function(){ this.form.fromProv=''; this.form.toProv=''; this.form.from=''; this.form.to=''; this.form.date=''; this.form.email=''; },
+                onSubmit: function(){
+                  if(!this.form.from || !this.form.to || !this.form.email){ this.$alert(window.I18N.alert_missing); return; }
+                  if(!this.form.date){ this.$alert(window.I18N.alert_invalid_date); return; }
+                  var d = new Date(this.form.date); var today = new Date(); today.setHours(0,0,0,0);
+                  if(d < today){
+                    var self = this;
+                    this.$confirm(window.I18N.confirm_past, '', { type: 'warning' }).then(function(){ self.submitNative(); }).catch(function(){});
+                    return;
+                  }
+                  this.submitNative();
+                },
+                submitNative: function(){ var self=this; this.submitting=true; setTimeout(function(){ document.getElementById('subForm').submit(); }, 150); }
+              },
+              mounted: function(){ var nf=document.getElementById('native-fallback'); if(nf) nf.style.display='none'; }
+            });
+          }catch(e){ console.error('Vue init error', e); throw e; }
+
+        }).catch(function(err){ console.error('Vue mount failed', err); });
+      }).catch(function(err){ console.error('loadAirportData failed', err); });
+
     })();
   </script>
   <style>
