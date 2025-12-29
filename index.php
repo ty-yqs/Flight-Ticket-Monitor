@@ -208,7 +208,7 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
 
     // Chinese translations for province names (fallback to original if missing)
     window.PROVINCE_CN = {
-      "Guangdong":"广东","Tibet":"西藏","Guizhou":"贵州","Guangxi":"广西","Inner Mongolia":"内蒙古","Xinjiang":"新疆","Shaanxi":"陕西","Henan":"河南","Hunan":"湖南","Hubei":"湖北","Hebei":"河北","Liaoning":"辽宁","Jiangsu":"江苏","Zhejiang":"浙江","Shanghai":"上海","Beijing":"北京","Tianjin":"天津","Chongqing":"重庆","Sichuan":"四川","Yunnan":"云南","Fujian":"福建","Shandong":"山东","Jilin":"吉林","Heilongjiang":"黑龙江","Anhui":"安徽","Shanxi":"山西","Gansu":"甘肃","Qinghai":"青海","Ningxia":"宁夏","Hainan":"海南","Taiwan":"台湾","Hong Kong":"香港","Macau":"澳门","Others":"其他"
+      "Guangdong":"广东","Tibet":"西藏","Guizhou":"贵州","Guangxi":"广西","Inner Mongolia":"内蒙古","Xinjiang":"新疆","Shaanxi":"陕西","Henan":"河南","Hunan":"湖南","Hubei":"湖北","Hebei":"河北","Liaoning":"辽宁","Jiangsu":"江苏","Zhejiang":"浙江","Shanghai":"上海","Beijing":"北京","Tianjin":"天津","Chongqing":"重庆","Sichuan":"四川","Yunnan":"云南","Fujian":"福建","Shandong":"山东","Jilin":"吉林","Heilongjiang":"黑龙江","Anhui":"安徽","Shanxi":"山西","Gansu":"甘肃","Qinghai":"青海","Ningxia":"宁夏","Hainan":"海南","Taiwan":"台湾","Hong Kong":"香港","Macau":"澳门","Others":"其他","Jiangxi":"江西"
     };
 
     (function(){
