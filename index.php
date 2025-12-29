@@ -152,20 +152,29 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
       confirm_past: <?php echo json_encode($t('confirm_past')) ?>,
       submitting: <?php echo json_encode($t('submitting')) ?>
     };
+    // app language
+    window.APP_LANG = <?php echo json_encode($lang) ?>;
+
+    // Chinese translations for province names (fallback to original if missing)
+    window.PROVINCE_CN = {
+      "Guangdong":"广东","Tibet":"西藏","Guizhou":"贵州","Guangxi":"广西","Inner Mongolia":"内蒙古","Xinjiang":"新疆","Shaanxi":"陕西","Henan":"河南","Hunan":"湖南","Hubei":"湖北","Hebei":"河北","Liaoning":"辽宁","Jiangsu":"江苏","Zhejiang":"浙江","Shanghai":"上海","Beijing":"北京","Tianjin":"天津","Chongqing":"重庆","Sichuan":"四川","Yunnan":"云南","Fujian":"福建","Shandong":"山东","Jilin":"吉林","Heilongjiang":"黑龙江","Anhui":"安徽","Shanxi":"山西","Gansu":"甘肃","Qinghai":"青海","Ningxia":"宁夏","Hainan":"海南","Taiwan":"台湾","Hong Kong":"香港","Macau":"澳门","Others":"其他"
+    };
 
     // Element-enhanced Vue app: mounts into #app-root and hides native fallback
     (function(){
-      // small helper to build grouped options from airports data
-      function buildGroupsFrom(data){
+      // build province list and map of airports per province for cascading selects
+      function buildProvinceMap(data){
         const items = data.map(a=>{
           const prov = (a.province && a.province.trim()) ? a.province.trim() : '';
-          const group = prov || (a.city && a.city.trim()) || a.country || 'Others';
-          return { code: a.iata, name: a.name || a.city || a.iata, group };
+          const province = prov || (a.city && a.city.trim()) || a.country || 'Others';
+          return { code: a.iata, name: a.name || a.city || a.iata, province };
         });
         const map = {};
-        items.forEach(a=>{ if(!map[a.group]) map[a.group]=[]; map[a.group].push(a); });
-        const keys = Object.keys(map).sort((a,b)=>{ if(a==='Others') return 1; if(b==='Others') return -1; return a.localeCompare(b,'zh-CN'); });
-        return keys.map(k=>({ name: k, items: map[k] }));
+        items.forEach(a=>{ if(!map[a.province]) map[a.province]=[]; map[a.province].push(a); });
+        const provinces = Object.keys(map).sort((a,b)=>{ if(a==='Others') return 1; if(b==='Others') return -1; return a.localeCompare(b,'zh-CN'); });
+        // build display objects: { key: 'Guangdong', label: '广东' }
+        const display = provinces.map(p=>({ key: p, label: (window.APP_LANG==='zh' ? (window.PROVINCE_CN[p] || p) : p) }));
+        return { provinces: display, map: map };
       }
 
       // load airport data (same priority as before)
@@ -177,30 +186,32 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
 
       // mount Vue app
       loadAirportData().then(data=>{
-        const groups = buildGroupsFrom(data);
-        // create app
+        const pm = buildProvinceMap(data);
+        // create app with cascading selects: province -> airports
         new Vue({
           el: '#app-root',
-          data: function(){ return { form: { from:'', to:'', date:'', email:'' }, groups: groups, submitting:false }; },
+          data: function(){ return { form: { fromProv:'', toProv:'', from:'', to:'', date:'', email:'' }, provinces: pm.provinces, airportMap: pm.map, submitting:false }; },
           template: `
             <div>
               <el-form :model="form" label-position="top">
                 <div class="row" style="margin-bottom:12px">
                   <div style="flex:1">
                     <label><?php echo htmlspecialchars($t('from_label')) ?></label>
-                    <el-select v-model="form.from" filterable placeholder="<?php echo htmlspecialchars($t('search_placeholder')) ?>" clearable>
-                      <el-option-group v-for="g in groups" :label="g.name" :key="g.name">
-                        <el-option v-for="opt in g.items" :key="opt.code" :label="opt.code + ' — ' + opt.name" :value="opt.code"></el-option>
-                      </el-option-group>
+                    <el-select v-model="form.fromProv" placeholder="<?php echo $lang==='zh' ? '选择省份' : 'Select province' ?>" clearable>
+                      <el-option v-for="p in provinces" :key="p.key" :label="p.label" :value="p.key"></el-option>
+                    </el-select>
+                    <el-select v-model="form.from" filterable :placeholder="form.fromProv ? '<?php echo htmlspecialchars($t('search_placeholder')) ?>' : '<?php echo htmlspecialchars($t('from_hint')) ?>'" clearable :disabled="!form.fromProv" style="margin-top:8px">
+                      <el-option v-for="opt in (airportMap[form.fromProv] || [])" :key="opt.code" :label="opt.code + ' — ' + opt.name" :value="opt.code"></el-option>
                     </el-select>
                     <div class="small hint"><?php echo htmlspecialchars($t('from_hint')) ?></div>
                   </div>
                   <div style="flex:1">
                     <label><?php echo htmlspecialchars($t('to_label')) ?></label>
-                    <el-select v-model="form.to" filterable placeholder="<?php echo htmlspecialchars($t('search_placeholder')) ?>" clearable>
-                      <el-option-group v-for="g in groups" :label="g.name" :key="g.name+'-to'">
-                        <el-option v-for="opt in g.items" :key="opt.code+'-to'" :label="opt.code + ' — ' + opt.name" :value="opt.code"></el-option>
-                      </el-option-group>
+                    <el-select v-model="form.toProv" placeholder="<?php echo $lang==='zh' ? '选择省份' : 'Select province' ?>" clearable>
+                      <el-option v-for="p in provinces" :key="p.key+'-to'" :label="p.label" :value="p.key"></el-option>
+                    </el-select>
+                    <el-select v-model="form.to" filterable :placeholder="form.toProv ? '<?php echo htmlspecialchars($t('search_placeholder')) ?>' : '<?php echo htmlspecialchars($t('from_hint')) ?>'" clearable :disabled="!form.toProv" style="margin-top:8px">
+                      <el-option v-for="opt in (airportMap[form.toProv] || [])" :key="opt.code+'-to'" :label="opt.code + ' — ' + opt.name" :value="opt.code"></el-option>
                     </el-select>
                   </div>
                 </div>
@@ -219,6 +230,8 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
                   <el-button @click.native.prevent="onReset" type="warning"><?php echo htmlspecialchars($t('reset_btn')) ?></el-button>
                 </div>
                 <!-- hidden native inputs to be submitted to server -->
+                <input type="hidden" name="fromProv" :value="form.fromProv">
+                <input type="hidden" name="toProv" :value="form.toProv">
                 <input type="hidden" name="from" :value="form.from">
                 <input type="hidden" name="to" :value="form.to">
                 <input type="hidden" name="date" :value="form.date">
@@ -227,7 +240,7 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
             </div>
           `,
           methods: {
-            onReset(){ this.form.from=''; this.form.to=''; this.form.date=''; this.form.email=''; },
+            onReset(){ this.form.fromProv=''; this.form.toProv=''; this.form.from=''; this.form.to=''; this.form.date=''; this.form.email=''; },
             onSubmit(){
               if(!this.form.from || !this.form.to || !this.form.email){ this.$alert(window.I18N.alert_missing); return; }
               if(!this.form.date){ this.$alert(window.I18N.alert_invalid_date); return; }
