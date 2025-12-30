@@ -74,6 +74,19 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
     @media (max-width:640px){.row{flex-direction:column}}
     .foot{margin-top:14px;font-size:13px;color:var(--muted)}
     .hint{color:#888;font-size:13px}
+    /* Ensure form columns align their label + input to the top */
+    .row > div { display:flex; flex-direction:column; justify-content:flex-start; }
+    .row > div label { margin-bottom:6px }
+    .row > div .el-input, .row > div .el-date-editor, .row > div input, .row > div .searchable { margin-top:0 }
+    /* normalize heights for Element inputs and native inputs so date and email align */
+    .el-input, .el-date-editor { display:flex; align-items:center; }
+    .el-input__inner, .el-date-editor .el-input__inner, input[type="email"], input[type="date"] {
+      height:44px; padding:10px 12px; box-sizing:border-box; line-height:20px; display:block;
+    }
+    /* remove extra margins that shift date picker */
+    .el-date-editor { margin-top:0; }
+    /* ensure label spacing doesn't differ */
+    .row > div label { margin-bottom:8px }
   </style>
   <!-- Element UI CSS (local) -->
   <link rel="stylesheet" href="/static/element-ui.css">
@@ -103,7 +116,7 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
           <div>
             <el-form :model="form" label-position="top">
               <div class="row" style="margin-bottom:12px">
-                <div style="flex:1">
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-start">
                   <label><?php echo htmlspecialchars($t('from_label')) ?></label>
                   <el-select v-model="form.fromProv" placeholder="<?php echo $lang==='zh' ? '选择省份' : 'Select province' ?>" clearable>
                     <el-option v-for="p in provinces" :key="p.key" :label="p.label" :value="p.key"></el-option>
@@ -113,7 +126,7 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
                   </el-select>
                   <div class="small hint"><?php echo htmlspecialchars($t('from_hint')) ?></div>
                 </div>
-                <div style="flex:1">
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-start">
                   <label><?php echo htmlspecialchars($t('to_label')) ?></label>
                   <el-select v-model="form.toProv" placeholder="<?php echo $lang==='zh' ? '选择省份' : 'Select province' ?>" clearable>
                     <el-option v-for="p in provinces" :key="p.key+'-to'" :label="p.label" :value="p.key"></el-option>
@@ -123,14 +136,16 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
                   </el-select>
                 </div>
               </div>
-              <div style="display:flex;gap:12px;align-items:flex-end">
-                <div style="flex:1">
+              <div style="display:flex;gap:12px;align-items:flex-start">
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-start">
                   <label><?php echo htmlspecialchars($t('date_label')) ?></label>
                   <el-date-picker v-model="form.date" type="date" placeholder="<?php echo htmlspecialchars($t('date_hint')) ?>" value-format="yyyy-MM-dd" :picker-options="datePickerOptions"></el-date-picker>
                 </div>
-                <div style="width:280px;min-width:160px">
-                  <label><?php echo htmlspecialchars($t('email_label')) ?></label>
-                  <el-input v-model="form.email" type="email" placeholder="you@example.com"></el-input>
+                <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-start">
+                  <div style="max-width:280px;min-width:160px">
+                    <label><?php echo htmlspecialchars($t('email_label')) ?></label>
+                    <el-input v-model="form.email" type="email" placeholder="you@example.com"></el-input>
+                  </div>
                 </div>
               </div>
               <div class="actions" style="margin-top:14px">
@@ -150,28 +165,30 @@ $baseUrl = strtok($_SERVER['REQUEST_URI'], '?');
 
         <!-- Fallback native inputs (kept for non-JS or server-side fallback) -->
         <div id="native-fallback">
-          <div class="row" style="margin-bottom:12px">
-            <div style="flex:1">
+            <div class="row" style="margin-bottom:12px">
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-start">
               <label for="from_search"><?php echo htmlspecialchars($t('from_label')) ?></label>
               <div class="searchable" id="from_search" data-name="from"></div>
               <div class="small hint"><?php echo htmlspecialchars($t('from_hint')) ?></div>
             </div>
-            <div style="flex:1">
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-start">
               <label for="to_search"><?php echo htmlspecialchars($t('to_label')) ?></label>
               <div class="searchable" id="to_search" data-name="to"></div>
             </div>
           </div>
 
-          <div style="display:flex;gap:12px;align-items:flex-end">
-              <div style="flex:1">
+          <div style="display:flex;gap:12px;align-items:flex-start">
+              <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-start">
               <label for="date"><?php echo htmlspecialchars($t('date_label')) ?></label>
               <input id="date" name="date" type="date" required min="<?php echo date('Y-m-d'); ?>">
               <div class="small hint"><?php echo htmlspecialchars($t('date_hint')) ?></div>
             </div>
 
-            <div style="width:280px;min-width:160px">
-              <label for="email"><?php echo htmlspecialchars($t('email_label')) ?></label>
-              <input id="email" name="email" type="email" placeholder="you@example.com" required>
+            <div style="flex:1;display:flex;flex-direction:column;justify-content:flex-start">
+              <div style="max-width:280px;min-width:160px">
+                <label for="email"><?php echo htmlspecialchars($t('email_label')) ?></label>
+                <input id="email" name="email" type="email" placeholder="you@example.com" required>
+              </div>
             </div>
           </div>
 
